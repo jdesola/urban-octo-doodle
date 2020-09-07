@@ -12,7 +12,7 @@ Lecture Slides, Recordings, and Cheat Sheets: https://drive.google.com/drive/u/2
 
 In Terminal:
 
-1. `cd ~/Development/<yourname>-java-blue-material`
+1. `cd ~/Development/yourname-java-blue-material`
 2. `git add -A`
 3. `git commit -m "comment"`
 4. `git pull upstream master`
