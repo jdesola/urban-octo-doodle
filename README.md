@@ -2,11 +2,17 @@
 
 ## IMPORTANT LINKS
 
-Java Blue Classroom:  <https://zoom.us/j/3948648450>
+Java Blue Classroom  
+<https://zoom.us/j/3948648450>
 
-Tech Elevator Student Book:  <https://book.techelevator.com/>
+Lecture Slides, Recordings, and Cheat Sheets  
+<https://drive.google.com/drive/u/2/folders/1iLRbOzKuapyumWmRGQOH4DjpolKD6ut6>
 
-Lecture Slides, Recordings, and Cheat Sheets:  <https://drive.google.com/drive/u/2/folders/1iLRbOzKuapyumWmRGQOH4DjpolKD6ut6>
+Tech Elevator Student Book  
+<https://book.techelevator.com/>
+
+Student Dashboard  
+<https://dashboard.techelevator.com/>
 
 ## GETTING NEW MATERIAL
 
