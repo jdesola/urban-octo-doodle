@@ -9,7 +9,7 @@ Lecture Slides, Recordings, and Cheat Sheets
 <https://drive.google.com/drive/u/2/folders/1iLRbOzKuapyumWmRGQOH4DjpolKD6ut6>
 
 Tech Elevator Student Book  
-<https://book.techelevator.com/>
+<https://book.techelevator.com/v2_0>
 
 Student Dashboard  
 <https://dashboard.techelevator.com/>
