@@ -10,7 +10,20 @@ public class Exercises {
 	 sleepIn(false, true) → true
 	 */
 	public boolean sleepIn(boolean weekday, boolean vacation) {
-		return false;
+		
+		boolean doesSleepIn = false;
+		// sleepIn is TRUE if NOT weekday
+		if (weekday == false) {
+			doesSleepIn = true;
+		}
+		
+		// sleepIn is TRUE if on Vacation
+		if (vacation == true) {
+			doesSleepIn = true;
+		}
+		
+		
+		return doesSleepIn;
 	}
 
 	/*
@@ -22,7 +35,9 @@ public class Exercises {
 	 monkeyTrouble(true, false) → false
 	 */
 	public boolean monkeyTrouble(boolean aSmile, boolean bSmile) {
-		return false;
+	
+		
+		return aSmile == bSmile;
 	}
 
 	/*
@@ -227,7 +242,27 @@ public class Exercises {
     yourCakeAndEatItToo(11.00, false) → "special"
     */
 	public String yourCakeAndEatItToo(double mealAmount, boolean isBirthday) {
-		return "";
+		
+		String typeOfDessert = "";
+		
+		// Add $5 if Birthday
+		if (isBirthday) {
+			mealAmount += 5;
+		}
+		
+		// <= 10 standard
+		if (mealAmount <= 10) {
+			typeOfDessert = "standard";
+		} else if (mealAmount <= 15) {
+			typeOfDessert = "special";
+		} else {
+			typeOfDessert = "ginormous";
+		}
+		// <= 15 special
+		// > 15 ginormous
+		
+		
+		return typeOfDessert;
 	}
 
 	/*
