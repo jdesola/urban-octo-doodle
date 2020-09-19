@@ -332,7 +332,6 @@ public class Exercises {
 	 squirrelPlay(95, true) → true
 	 */
 	public boolean squirrelPlay(int temp, boolean isSummer) {
-		
 		boolean areSquirrelsPlaying = false;
 		//if summer, between 60 and 100, squirrels playing
 		if (isSummer) {
@@ -347,7 +346,7 @@ public class Exercises {
 		//could also use a var and ternary operator to set the upper limit
 		
 		return areSquirrelsPlaying;
-	}
+		}
 
 	/*
     19. Dessert Island Diner believes a meal isn't a meal without dessert. All meals come with
