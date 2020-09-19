@@ -16,7 +16,11 @@ public class DecimalToBinary {
 				binaryNumberString = Integer.toString((numberToConvertToBinary % 2)) + binaryNumberString;
 				numberToConvertToBinary = numberToConvertToBinary / 2;
 				}
+			if (originalNumber > 0) {
 			System.out.printf("%d in binary is %s%n", originalNumber, binaryNumberString);
+			} else {
+			System.out.printf("%d in binary is %s%n", originalNumber, "0");	
+			}
 	}
 
 	}
