@@ -29,7 +29,7 @@ public class Exercises {
 	 makePi() → [3, 1, 4]
 	 */
 	public int[] makePi() {
-		return new int[] {};
+		return new int[] { 3, 1, 4};
 	}
 
 	/*
@@ -72,7 +72,7 @@ public class Exercises {
 	 reverse3([7, 0, 0]) → [0, 0, 7]
 	 */
 	public int[] reverse3(int[] nums) {
-		return new int[] {};
+		return new int[] { nums[2], nums[1], nums[0] };
 	}
 
 	/*
@@ -130,7 +130,23 @@ public class Exercises {
 	 sum13([1, 2, 2, 1, 13, 3, 4]) → 10
 	 */
 	public int sum13(int[] nums) {
-		return 0;
+		
+		int sum = 0;
+		
+		for ( int i = 0 ; i < nums.length ; i++) {
+			
+			if ( nums[i] == 13 ) {
+				if (i < nums.length - 1) {
+					i++;
+				}
+			} else {
+				sum += nums[i];
+			}
+			
+		}
+		
+		
+		return sum;
 	}
 
 	/*
