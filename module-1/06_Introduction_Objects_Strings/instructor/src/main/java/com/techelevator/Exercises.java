@@ -13,14 +13,18 @@ public class Exercises {
 	}
 
 	/*
-	 Given two strings, a and b, return the result of putting them together in the order abba,
+	 Given two strings, a and b, 
+	 return the result of putting them together in the order abba,
 	 e.g. "Hi" and "Bye" returns "HiByeByeHi".
 	 makeAbba("Hi", "Bye") → "HiByeByeHi"
 	 makeAbba("Yo", "Alice") → "YoAliceAliceYo"
 	 makeAbba("What", "Up") → "WhatUpUpWhat"
 	 */
 	public String makeAbba(String a, String b) {
-		return null;
+		
+		String abba = a + b + b + a;
+		
+		return abba;
 	}
 
 	/*
@@ -48,14 +52,24 @@ public class Exercises {
 	}
 
 	/*
-	 Given a string, return a new string made of 3 copies of the last 2 chars of the original string. The string
-	 length will be at least 2.
+	 Given a string, 
+	 return a new string made of 3 copies of the last 2 chars of the original string. 
+	 The string length will be at least 2.
 	 extraEnd("Hello") → "lololo"
 	 extraEnd("ab") → "ababab"
 	 extraEnd("Hi") → "HiHiHi"
 	 */
 	public String extraEnd(String str) {
-		return null;
+		
+		String ends = "";
+		
+		
+		// Get the last 2 letters
+		String lastTwoLetters = str.substring(str.length() - 2);
+		// Put them together 3 times
+		ends = lastTwoLetters + lastTwoLetters + lastTwoLetters;
+		
+		return ends;
 	}
 
 	/*
@@ -81,7 +95,8 @@ public class Exercises {
 	}
 
 	/*
-	 Given a string, return a version without the first and last char, so "Hello" yields "ell".
+	 Given a string, return a version without the first and last char, 
+	 so "Hello" yields "ell".
 	 The string length will be at least 2.
 	 withoutEnd("Hello") → "ell"
 	 withoutEnd("java") → "av"
@@ -315,7 +330,21 @@ public class Exercises {
 	 altPairs("CodingHorror") → "Congrr"
 	 */
 	public String altPairs(String str) {
-		return null;
+		
+		String newStr = "";
+		
+		for ( int i = 0 ; i < str.length(); i += 4 ) {
+			
+				//newStr += String.valueOf(str.charAt(i)) + String.valueOf(str.charAt(i+ 1));
+			
+				newStr += str.charAt(i); 
+				if ( i + 1 < str.length()) {
+					newStr += str.charAt( i + 1 );
+				}
+		}
+		
+		
+		return newStr;
 	}
 
 	/*
