@@ -1,25 +1,72 @@
 package com.techelevator;
 
+import java.util.Scanner;
 
 public class Lecture {
 
 	public static void main(String[] args) {
 
 		/* Object Instantiation */
-
+		String myString = new String("Hello");
+		//String myString2 = "Hello";
+		
+		int[] myArray = new int[5];
+		
+		Scanner in = new Scanner( System.in );
+		
+		House houseAt443WinstonStreet = new House(1800, "443 Winston St", "Cornflower Blue");
+		House houseAt123SomeStreet = new House(2000, "123 Some St", "Orange");
+		
+		
+		houseAt443WinstonStreet.setColor("Red");
+		
+		houseAt123SomeStreet.setNumberOfFloors(3);
+		
+		
 		
 		/* Value Type */
 		int x = 10;
-
+		int y = x;
+		x = 20;
 		
 		/* Reference Type */
 		int[] numbers = { 10, 20, 30 , 40 };
-	
+
+		int[] nums2 = numbers;
 		
+		numbers[1] = 22;
+		nums2[3] = 444;
+		
+	
 		
 		String firstName = "joe";
 		firstName.toUpperCase();
 
+		
+		String greetings = "Hello, ";
+		greetings = greetings + "Rachelle";
+		
+		String farewell = "Goodbye, ";
+		String farewellDoug = farewell + "Doug";
+		
+		String one = new String("One");
+		String oneA = new String("One");
+		
+		if (one == oneA) {
+			System.out.println("Have the same reference");
+		}
+		
+		if (one.equals(oneA)) {
+			System.out.println("Have the same value");
+		}
+		
+		String two = one;
+		
+		if ( one == two ) {
+			System.out.println("One and Two are equal");
+		}
+		
+		
 		
 		System.out.println("************************************");
 		System.out.println("****** MAKING A STRING OBJECT ******");
@@ -51,15 +98,21 @@ public class Lecture {
 		System.out.println(fourth);
 		
 		/* length */
-		int nameLength = 0;
+		int nameLength = name.length();
 		System.out.println("The length of the String "  + name + " is " + nameLength);
+		
+		// Loop through each char in the string
+		for (int i = 0; i < name.length(); i++) {
+			System.out.println( name.charAt(i) );
+		}
+		
 		
 		/* SubString */
 		String s = "Tech Elevator";
-		String subStringOfs = "";
+		String subStringOfs = s.substring(2, 7);
 		System.out.println(subStringOfs);
 		
-		String subStringToEnd = "";
+		String subStringToEnd = s.substring(10);
 		System.out.println(subStringToEnd);
 		
 		/* Contains */
@@ -70,6 +123,15 @@ public class Lecture {
 		System.out.println("containsHello : "+containsHello);
 		boolean containsBogus = hello.contains("bogus");
 		System.out.println("containsBogus : "+containsBogus);
+		
+		boolean startsWithHello = hello.startsWith("Hel");
+		
+		int indexOfLetter = hello.indexOf('o');
+		
+		String newHello = hello.replace("World", "Something");
+		
+		String[] splitArray = hello.split(" ");
+		
 		
 		/* Other commonly used methods:
 		 * 
@@ -86,6 +148,11 @@ public class Lecture {
 		 * String.join()  <-- available only on the String class and not the string object
 		 */
 
+		String.valueOf( true );
+		
+		String countDown = String.join("-->", "Five", "Four", "Three", "Two", "One");
+		
+		System.out.println(countDown);
 		
 		
 		System.out.println();
