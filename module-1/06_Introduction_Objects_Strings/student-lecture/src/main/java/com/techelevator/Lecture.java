@@ -1,12 +1,26 @@
 package com.techelevator;
 
+import java.util.Scanner;
 
 public class Lecture {
 
 	public static void main(String[] args) {
 
 		/* Object Instantiation */
-
+		String myString = new String("Hello"); //typical for Object
+		String myString2 = "Hello"; //special setup for String
+		
+		int[] myArray = new int[5];
+		
+		Scanner in = new Scanner( System.in );
+		
+		House houseAt443WinstonStreet = new House(1800, "443 Winston St", "Cornflower Blue");
+		
+		House houseAt123SomeStreet = new House(2000, "123 Some St", "Orange");
+		
+		houseAt443WinstonStreet.setColor("Red");
+		
+		houseAt123SomeStreet.setNumberOfFloors(3);
 		
 		/* Value Type */
 		int x = 10;
