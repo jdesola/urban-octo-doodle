@@ -1,6 +1,7 @@
 package com.techelevator;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -14,6 +15,7 @@ public class Exercises {
 	/*
 	 Note, for-each is preferred, and should be used when possible.
 	 */
+	//try for-each first, then look at while or traditional for
 
 	/*
 	 Given an array of Strings, return an ArrayList containing the same Strings in the same order
@@ -22,7 +24,8 @@ public class Exercises {
 	 array2List( {"Left", "Right", "Forward", "Back"} )  ->  ["Left", "Right", "Forward", "Back"]
 	 */
 	public List<String> array2List(String[] stringArray) {
-		return null;
+		List<String> convertedArray = Arrays.asList( stringArray );
+		return convertedArray;
 	}
 
 	/*
@@ -32,7 +35,9 @@ public class Exercises {
 	 list2Array( ["Left", "Right", "Forward", "Back"] )  ->  {"Left", "Right", "Forward", "Back"}
 	 */
 	public String[] list2Array(List<String> stringList) {
-		return null;
+		String[] convertedList = stringList.toArray( new String[stringList.size()] );
+		
+		return convertedList;
 	}
 
 	/*
@@ -43,7 +48,17 @@ public class Exercises {
 	 no4LetterWords( {"Jack", "Jill", "Jane", "John", "Jim"} )  ->  ["Jim"]
 	 */
 	public List<String> no4LetterWords(String[] stringArray) {
-		return null;
+		List<String> words = new ArrayList<String>();
+		
+		for (String word : stringArray ) {
+			if (word.length() == 4) {
+				continue;
+			}
+			words.add( word );
+		}
+				
+				
+		return words;
 	}
 
 	/*
@@ -55,7 +70,21 @@ public class Exercises {
 		-> ["way", "the", "all", "jingle", "bells", "jingle", "bells", "jingle"]
 	 */
 	public List<String> reverseList(List<String> stringList) {
-		return null;
+		
+		Stack<String> reverseListSetup = new Stack<String>();
+		
+		for ( String stringFromList : stringList ) {
+			reverseListSetup.push( stringFromList );
+		}
+		
+		List<String> reversedList = new ArrayList<String>();
+		
+		while ( !reverseListSetup.isEmpty()) {
+			reversedList.add( reverseListSetup.pop( ));
+		}
+		
+		
+		return reversedList;
 	}
 
 	/*
@@ -65,7 +94,13 @@ public class Exercises {
 	 arrayInt2ListDouble( {84, 99, 3285, 13, 877} ) -> [42, 49.5, 1642.5, 6.5, 438.5]
 	 */
 	public List<Double> arrayInt2ListDouble(int[] intArray) {
-		return null;
+		List<Double> doubleDoubleThisThis = new ArrayList<Double>();
+		
+		for ( double numToHalve : intArray) {
+			doubleDoubleThisThis.add( (numToHalve / 2) );
+		}
+		
+		return doubleDoubleThisThis;
 	}
 
 	/*
@@ -75,7 +110,15 @@ public class Exercises {
 	 findLargest( [34070, 1380, 81238, 7782, 234, 64362, 627] ) -> 64362
 	 */
 	public Integer findLargest(List<Integer> integerList) {
-		return null;
+		Integer maxValue = 0;
+		
+		for ( int numToCheck : integerList ) {
+			if ( numToCheck > maxValue ) {
+				maxValue = numToCheck;
+			}
+		}
+		
+		return maxValue;
 	}
 
 	/*
@@ -85,7 +128,15 @@ public class Exercises {
 	 oddOnly( {734, 233, 782, 811, 3, 9999} ) -> [233, 811, 3, 9999]
 	 */
 	public List<Integer> oddOnly(Integer[] integerArray) {
-		return null;
+		List<Integer> justTheOddOnes = new ArrayList<Integer>();
+		
+		for ( Integer numToCheck : integerArray ) {
+			if ( numToCheck % 2 == 1 ) {
+				justTheOddOnes.add(numToCheck);
+			}
+		}
+		
+		return justTheOddOnes;
 	}
 
 	/*
@@ -96,7 +147,19 @@ public class Exercises {
 	 foundIntTwice( [9, 23, 44, 2, 88, 44], 44) -> true
 	 */
 	public boolean foundIntTwice(List<Integer> integerList, int intToFind) {
-		return false;
+		boolean isIntFoundTwice = false;
+		int count = 0;
+		
+		for ( int numToCheck : integerList) {
+			if ( numToCheck == intToFind ) {
+				count++;
+			}
+		}
+		if ( count >= 2 ) {
+			isIntFoundTwice = true;
+		}
+		
+		return isIntFoundTwice;
 	}
 
 	/*
@@ -113,7 +176,22 @@ public class Exercises {
 	 equals "1")
 	 */
 	public List<String> fizzBuzzList(Integer[] integerArray) {
-		return null;
+		List<String> buzzFizzList = new ArrayList<String>();
+		
+		for ( Integer numToCheck : integerArray ) {
+			String fizzBuzz = "";
+			if ( numToCheck % 3 == 0) {
+				fizzBuzz = "Fizz";
+			} 
+			if ( numToCheck % 5 == 0) {
+				fizzBuzz += "Buzz";
+			}
+			
+			buzzFizzList.add( fizzBuzz.length() > 0 ? fizzBuzz : numToCheck.toString());
+			
+		}
+			
+		return buzzFizzList;
 	}
 
 	/*
@@ -124,7 +202,32 @@ public class Exercises {
 	 interleaveLists( [1, 2, 3], [4, 5, 6] )  ->  [1, 4, 2, 5, 3, 6]
 	 */
 	public List<Integer> interleaveLists(List<Integer> listOne, List<Integer> listTwo) {
-		return null;
+		List<Integer> interweavedLists = new ArrayList<Integer>();
+		
+		
+		if ( listOne.size() > listTwo.size() ) {
+			for (int i = 0; i < listTwo.size(); i++) {
+				interweavedLists.add(listOne.get(i));
+				interweavedLists.add(listTwo.get(i));
+			} for (int i = ( listOne.size() - 1); i < listOne.size(); i++) {
+				interweavedLists.add(listOne.get(i));
+			}
+		} else if ( listTwo.size() > listOne.size() ) {
+			for (int i = 0; i < listOne.size(); i++) {
+				interweavedLists.add(listOne.get(i));
+				interweavedLists.add(listTwo.get(i));
+			} for (int i = ( listTwo.size() - 1); i < listTwo.size(); i++ ) {
+				interweavedLists.add(listTwo.get(i));
+			}
+		} else {
+			for (int i = 0; i < listOne.size(); i++) {
+				interweavedLists.add(listOne.get(i));
+				interweavedLists.add(listTwo.get(i));
+			}
+		}
+		
+		
+		return interweavedLists;
 	}
 
 	/*
@@ -136,8 +239,39 @@ public class Exercises {
 	 boardingGate( [29, 19, 9, 21, 11, 1, 0, 25, 15, 5, 31] ) -> [9, 1, 5, 19, 11, 15, 29, 21, 25]
 	 boardingGate( [0, -1, 44, 31, 17, 7, 27, 16, 26, 6] ) -> [7, 6, 17, 16, 27, 26]
 	 */
+	
+	//can use queues, but lists are ok and easier
 	public List<Integer> boardingGate(List<Integer> seatNumberList) {
-		return null;
+		
+		List<Integer> seats1Through10 = new ArrayList<Integer>();
+		List<Integer> seats11Through20 = new ArrayList<Integer>();
+		List<Integer> seats21Through30 = new ArrayList<Integer>();
+		
+		List<Integer> finalBoardingList = new ArrayList<Integer>();
+		
+		for ( Integer seatNumber : seatNumberList ) {
+			if ( seatNumber >= 1 && seatNumber <= 10 ) {
+				seats1Through10.add( seatNumber );
+			} else if ( seatNumber >= 11 && seatNumber <= 20 ) {
+				seats11Through20.add( seatNumber );
+			} else if ( seatNumber >= 21 && seatNumber <= 30 ) {
+				seats21Through30.add( seatNumber );
+			}
+		}
+		
+		for ( Integer seatNumber : seats1Through10 ) {
+			finalBoardingList.add( seatNumber );
+		}
+		
+		for ( Integer seatNumber : seats11Through20 ) {
+			finalBoardingList.add( seatNumber );
+		}
+		
+		for ( Integer seatNumber : seats21Through30 ) {
+			finalBoardingList.add( seatNumber );
+		}
+		
+		return finalBoardingList;
 	}
 
 }
