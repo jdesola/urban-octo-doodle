@@ -43,7 +43,16 @@ public class Exercises {
 	 no4LetterWords( {"Jack", "Jill", "Jane", "John", "Jim"} )  ->  ["Jim"]
 	 */
 	public List<String> no4LetterWords(String[] stringArray) {
-		return null;
+		
+		List<String> words = new ArrayList<String>();
+		
+		for (String word : stringArray) {
+			if ( word.length() != 4  ) {
+				words.add( word );
+			}
+		}
+					
+		return words;
 	}
 
 	/*
@@ -113,7 +122,32 @@ public class Exercises {
 	 equals "1")
 	 */
 	public List<String> fizzBuzzList(Integer[] integerArray) {
-		return null;
+		
+		// If  % 3 -> Fizz
+		// If % 5 -> Buzz
+		// If % 3 AND % 5 -> FizzBuzz
+		// Else #
+		
+		List<String> fizzList = new ArrayList<String>();
+		
+		for (Integer num : integerArray) {
+			
+			String fizzBuzz = "";
+			
+			if (num % 3 == 0) {
+				fizzBuzz = "Fizz";
+			}
+			if (num % 5 == 0) {
+				fizzBuzz += "Buzz";
+			}
+			
+			fizzList.add( fizzBuzz.length() > 0 ? fizzBuzz : num.toString());
+			
+		}
+		
+		
+		
+		return fizzList;
 	}
 
 	/*
