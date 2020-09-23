@@ -21,7 +21,7 @@ public class AlgorithmComplexity {
 		//doesArrayContain10(array);
 
 		// O(n^2) : Quadratic Complexity
-		//doesArrayContainDuplicates(array);
+//		doesArrayContainDuplicates(array);
 		
 		// O(2n) : Exponential Complexity
 		Fibonacci(count);

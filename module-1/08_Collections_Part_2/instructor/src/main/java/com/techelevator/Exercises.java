@@ -1,7 +1,10 @@
 package com.techelevator;
 
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class Exercises {
 
@@ -35,6 +38,13 @@ public class Exercises {
 	 *
 	 */
 	public String animalGroupName(String animalName) {
+		
+		Map<String, String> animalHerds = new HashMap<String, String>();
+		
+		animalHerds.put("RHINO", "Crash");
+		
+		animalHerds.get( animalName.toUpperCase() );
+		
 		return null;
 	}
 
@@ -132,7 +142,33 @@ public class Exercises {
 	 *
 	 */
 	public Map<Integer, Integer> integerCount(int[] ints) {
-		return null;
+		
+		Map<Integer, Integer> intCounts = new HashMap<Integer, Integer>();
+		
+		// Find the unique numbers in the array
+		Set<Integer> uniqueInts = new HashSet<Integer>();
+		
+		for (int i : ints) {
+			uniqueInts.add( i );
+		}
+		
+		// loop through the array for each unique number counting them
+		
+		for (int i : uniqueInts) {
+			
+			int count = 0;
+			
+			for (int j : ints) {
+				if ( i == j ) {
+					count++;
+				}
+			}
+			
+			intCounts.put(i, count);
+		}
+		
+		
+		return intCounts;
 	}
 
 	/*
@@ -178,7 +214,24 @@ public class Exercises {
 	 *
 	 */
 	public Map<String, Integer> last2Revisited(String[] words) {
-		return null;
+		
+		Map<String, Integer> last2Counts = new HashMap<String, Integer>();
+		
+		for (String word : words) {
+			String end = word.substring( word.length() - 2 );
+			
+			int count = 0;
+			for (int i = 0; i < word.length() - 2; i++) {
+				if (end.equals( word.substring(i, i + 2)  )) {
+					count++;
+				}
+			}
+			
+			last2Counts.put(word, count);
+		}
+		
+		
+		return last2Counts;
 	}
 
 	/*

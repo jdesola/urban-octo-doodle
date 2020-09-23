@@ -99,6 +99,12 @@ public class Lecture {
 		numbers.add( new Integer("50") );
 		
 
+		Double dbl = new Double("3.14");
+		
+		List<Double> listOfDoubles = new ArrayList<Double>();
+		listOfDoubles.add(new Double("2.75"));
+
+		
 		System.out.println("####################");
 		System.out.println("       FOREACH");
 		System.out.println("####################");
