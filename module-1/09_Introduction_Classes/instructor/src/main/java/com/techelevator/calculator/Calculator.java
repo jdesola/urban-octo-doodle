@@ -2,8 +2,15 @@ package com.techelevator.calculator;
 
 public class Calculator {
 
-	//
-	// Write code here
-	//
+	private int result = 0;
+
+	public int getResult() {
+		return result;
+	}
+
+	public int add( int addend ) {
+		this.result += addend;
+		return this.result;
+	}
 	
 }
