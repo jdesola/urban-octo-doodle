@@ -141,7 +141,7 @@ public class Exercises {
 				fizzBuzz += "Buzz";
 			}
 			
-			fizzList.add( fizzBuzz.length() > 0 ? fizzBuzz : num.toString());
+			fizzList.add( fizzBuzz.length() > 0 ? fizzBuzz : num.toString() );
 			
 		}
 		

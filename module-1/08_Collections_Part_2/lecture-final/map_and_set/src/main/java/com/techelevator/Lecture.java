@@ -21,59 +21,48 @@ public class Lecture {
 		System.out.println();
 
 		/* DECLARE AND INSTANTIATE A SET */
+		
+		// HashSet does not maintain Order
 		//Set<Integer> setOfNumbers = new HashSet<Integer>();
+		
+		// LinkedHash Set maitains Order of Insertion
 		//Set<Integer> setOfNumbers = new LinkedHashSet<Integer>();
+		
+		// TreeSet maintains Natural Order of the Data Type
 		Set<Integer> setOfNumbers = new TreeSet<Integer>();
 		
 		/* ADD ITEMS TO THE SET */
-		setOfNumbers.add(1);
-		setOfNumbers.add(10);
-		setOfNumbers.add(30);
-		setOfNumbers.add(301);
-		setOfNumbers.add(301);
-		setOfNumbers.add(10);
-		setOfNumbers.add(42);
-		setOfNumbers.add(5708);
-
+		setOfNumbers.add( 1 );
+		setOfNumbers.add( 10 );
+		setOfNumbers.add( 30 );
+		setOfNumbers.add( 301 );
+		setOfNumbers.add( 301 );  // Duplicates are ignored
+		setOfNumbers.add( 10 );   // Duplicates do not cause an error or warning
+		setOfNumbers.add( 42 );
+		setOfNumbers.add( 5708 );
+		
 		
 		/* LOOP OVER A SET */
-		for (Integer number : setOfNumbers) {
-			System.out.println( number );
+		for ( Integer num : setOfNumbers) {
+			System.out.println( num );
 		}
 
-		
-		Set<String> setOfStrings = new TreeSet<String>();
-		
-		/* ADD ITEMS TO THE SET */
-		setOfStrings.add("1");
-		setOfStrings.add("10");
-		setOfStrings.add("30");
-		setOfStrings.add("301");
-		setOfStrings.add("301");
-		setOfStrings.add("10");
-		setOfStrings.add("42");
-		setOfStrings.add("5708");
-
-		
-		/* LOOP OVER A SET */
-		for (String number : setOfStrings) {
-			System.out.println( number );
-		}
-		
+		System.out.println();
 		
 		/*USE CASE:  USE A SET TO REMOVE DUPLICATES AND ORDER THE ARRAY */
 		String[] instructorWorkLog = {"Rachelle", "John", "Matt", "Matty", "Rachelle", "Steve", "John", "Rachelle" };
 		
-		Set<String> workLogSet = new TreeSet<String>();
+		Set<String> instructorSet = new TreeSet<String>();
+		
 		for (String name : instructorWorkLog) {
-			workLogSet.add(name);
+			instructorSet.add( name );
 		}
 		
-		System.out.println("The following people logged work: ");
-		for (String name : workLogSet) {
-			System.out.println(name);
+		for (String instructor : instructorSet) {
+			System.out.println( instructor );
 		}
 		
+		System.out.println();
 		
 		System.out.println("####################");
 		System.out.println("       MAPS");
@@ -89,39 +78,46 @@ public class Lecture {
 		animalNoises.put("Dog", "Bark");
 		animalNoises.put("Cat", "Meow");
 		
+		// Keys must be unique, but the values do not
 		animalNoises.put("Lion", "Roar");
 		animalNoises.put("Duck", "Roar");
 		
 		/* RETRIEVING AN ITEM FROM A MAP */
+		System.out.println("The Cow says " + animalNoises.get("Cow") );
 		
-		String cowNoise = animalNoises.get("Cow");
-		String catNoise = animalNoises.get("Cat");
+		String catSound = animalNoises.get("Cat");
+		
+		// If get a key that doesn't exist returns null
+		String foxSound = animalNoises.get("Fox");
 		
 		/* UPDATING AN ITEM IN A MAP */
-		String duckNoise = animalNoises.get("Duck");
-		// put() adds the key/value pair if the key does not exist, and 
-		// updates the value if the key already exists
-		animalNoises.put("Duck", "Quack");
-		duckNoise = animalNoises.get("Duck");
-			
-		// If get( key ) is used with a key that does not exist in the
-		// map it returns null
-		String penguinSound = animalNoises.get("Penguin");
+
+		String duckSound = animalNoises.get("Duck");
 		
+		// If put using a key that does exist, the value is updated to the new value
+		animalNoises.put("Duck", "Quack");
+		
+		duckSound = animalNoises.get("Duck");
+
+
+			
 		/* REMOVING AN ITEM FROM A MAP */
-		String lionNoise = animalNoises.remove( "Lion" );
+		// Remove removes the key/value pair and returns the value
+		String lionSound = animalNoises.remove("Lion");
+		
 		// If the key does not exists, the null returned
-		String wolfNoise = animalNoises.remove( "Wolf" );
+		lionSound = animalNoises.remove("Lion");
 		
 		
 		/* CHECK IF AN ITEM EXISTS */
 		// containsKey(key) returns TRUE if the KEY exists in the Map
-		boolean doesCatExist = animalNoises.containsKey("Cat");
-		boolean doesTigerExist = animalNoises.containsKey("Tiger");
+		
+		boolean catExists = animalNoises.containsKey("Cat");
+		boolean foxExists = animalNoises.containsKey("Fox");
 		
 		// containsValue(value) returns TRUE if the VALUE exists in the Map
-		boolean doesMeowExist = animalNoises.containsValue("Meow");
-		boolean doesRrrrExist = animalNoises.containsValue("Rrrrr");
+		boolean meowExists = animalNoises.containsValue("Meow");
+		boolean oinkExists = animalNoises.containsValue("Oink");
 		
 		System.out.println();
 		
@@ -129,15 +125,27 @@ public class Lecture {
 		/* LOOPING OVER A MAP */
 		// Loop through a map by looping through the Keys
 		
-		for (String key : animalNoises.keySet()) {
+		for ( String key : animalNoises.keySet() ) {
+			
 			// Then using the keys to get the value
-			System.out.println( key + " = " + animalNoises.get(key) );
+			System.out.println( "The " + key + " says " + animalNoises.get(key));
+			
 		}
 		
-		// Using Entry Set
-		for ( Entry<String, String> entry : animalNoises.entrySet() ) {
-			System.out.println( entry.getKey() + " = " + entry.getValue() );
+		
+		// Can also loop through a map using the entrySet
+		for ( Entry<String, String> nextEntry : animalNoises.entrySet() ) {
+			
+			// Get the key using the getKey() method on the entry object
+			String key = nextEntry.getKey();
+			
+			// Get the value using the getValue() method on the entry object
+			String value = nextEntry.getValue();
+			
+			System.out.println( "The " + key + " says " + value);
+			
 		}
+		
 
 
 		System.out.println();
@@ -149,12 +157,22 @@ public class Lecture {
 		accounts.put(56789, 200d);
 		
 		// Transfer half of Map 12345's money to account 56789
+		double halfOfAccount12345 = accounts.get(12345) / 2.0;
+
+		accounts.put(12345, halfOfAccount12345);
+		//accounts.put(12345, accounts.get(12345) - halfOfAccount12345 );
+		accounts.put(56789,  accounts.get(56789) + halfOfAccount12345);
 		
-		double halfOfBalanceAcct12345 = accounts.get(12345) / 2.0;
-		accounts.put(12345, accounts.get(12345) - halfOfBalanceAcct12345);
-		accounts.put(56789, accounts.get(56789) + halfOfBalanceAcct12345);
+		// When working with integers, do division once and then add/subtract the result to get 
+		// the final values
 		
-	
+//		int whole = 5;
+//		
+//		int half = whole / 2;  // 2
+//		int halfOfWhole = whole - half;   // 5 - 2 = 3
+//		
+//		whole - halfOfWhole // 5 - 3 = 2
+//		whole  - whole / 2 // 5 - 2 = 3
 		
 		
 		
