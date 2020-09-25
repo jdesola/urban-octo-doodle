@@ -2,7 +2,7 @@ package com.techelevator.staticExample;
 
 public class CashRegister {
 
-	private static double storeBalance = 0;
+	private static  double storeBalance = 0;
 	private static int storeTransactions = 0;
 	
 	private String name;
