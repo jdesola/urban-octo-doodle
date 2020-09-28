@@ -24,6 +24,15 @@ public class Calculator {
 	
 	}
 	
+	public void anotherMethod() {
+		
+	}
+	
+	private void privateMethod() {
+		
+	}
+	
+	
 	public double getTotal() {
 		return this.total;
 	}
