@@ -16,5 +16,10 @@ public class VipTicket extends Ticket {
 		return super.getFee().add( upCharge );
 	}
 	
+	@Override
+	public String getName() {
+		// TODO Auto-generated method stub
+		return "Vip Ticket";
+	}
 	
 }

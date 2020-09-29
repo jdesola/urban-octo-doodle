@@ -14,4 +14,5 @@ public class ScientificCalculator extends Calculator {
 		super.setTotal(0);
 	}
 	
+	
 }

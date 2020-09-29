@@ -3,7 +3,7 @@ package com.techelevator.tickets;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
-public class Ticket {
+public class Ticket implements Item {
 
 	private BigDecimal price;
 	
@@ -23,6 +23,12 @@ public class Ticket {
 		BigDecimal totalCost = price.add( getFee() );
 		totalCost = totalCost.setScale(2, RoundingMode.HALF_UP);
 		return totalCost;
+	}
+
+	@Override
+	public String getName() {
+		// TODO Auto-generated method stub
+		return "Ticket";
 	}
 
 	

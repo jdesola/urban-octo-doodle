@@ -19,5 +19,11 @@ public class WillCallTicket extends Ticket {
 	public BigDecimal getFee() {
 		return super.getPrice().multiply( new BigDecimal(.10) );
 	}
+	
+	@Override
+	public String getName() {
+		// TODO Auto-generated method stub
+		return "Will Call Ticket";
+	}
 
 }
