@@ -17,5 +17,10 @@ public class Cow extends FarmAnimal implements Sellable, Milkable {
 		System.out.println("Milk the cow");
 		
 	}
+	
+	@Override
+	public void eat() {
+		System.out.println("The Cow eats...");
+	}
 
 }

@@ -14,7 +14,7 @@ public class AcessorSubClassInOtherPackage extends AccessorExamples {
 		this.availableToSubclasses();
 		
 		// Default method availableInTheSamePackage() is not available
-		
+
 		// Private method availableOnlyInThisClass() is not available
 		
 	}
