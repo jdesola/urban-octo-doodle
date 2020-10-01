@@ -3,7 +3,7 @@ package com.techelevator.tickets;
 import java.math.BigDecimal;
 import java.util.List;
 
-public class MusicAlbum implements Item {
+public abstract class MusicAlbum implements Item {
 
 	private double price;
 	private String name;
@@ -18,10 +18,13 @@ public class MusicAlbum implements Item {
 	}
 	
 	
+	protected abstract BigDecimal calculateShippingCost();
+	
+	
 	@Override
 	public BigDecimal getTotalPrice() {
 		// TODO Auto-generated method stub
-		return new BigDecimal(price).add( new BigDecimal(2) );
+		return new BigDecimal(price).add( calculateShippingCost() );
 	}
 
 	@Override

@@ -6,4 +6,10 @@ public class Horse extends FarmAnimal {
 		super("Horse", "Neigh");
 	}
 
+	@Override
+	public void eat() {
+		System.out.println("The Horse eats...");
+		
+	}
+
 }
