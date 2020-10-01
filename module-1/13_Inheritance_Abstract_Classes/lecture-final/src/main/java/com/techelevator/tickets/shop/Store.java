@@ -75,6 +75,7 @@ public class Store {
 				
 				
 			}
+		
 			
 			System.out.print("Select a Product >>>");
 			int choice = in.nextInt() - 1;
