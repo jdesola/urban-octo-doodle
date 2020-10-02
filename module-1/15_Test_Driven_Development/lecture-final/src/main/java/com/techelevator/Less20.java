@@ -17,7 +17,6 @@ public class Less20 {
 		}
 		
 
-		
 		return false;
 	}
 

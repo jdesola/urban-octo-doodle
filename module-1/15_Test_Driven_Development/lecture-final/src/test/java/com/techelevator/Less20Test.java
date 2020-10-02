@@ -21,4 +21,9 @@ public class Less20Test {
 		Assert.assertTrue( target.isLessThanMultipleOf20( 18 ) );
 	}
 	
+	@Test
+	public void multiples_of_20() {
+		
+	}
+	
 }
