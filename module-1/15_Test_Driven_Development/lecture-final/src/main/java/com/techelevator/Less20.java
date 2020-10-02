@@ -16,6 +16,10 @@ public class Less20 {
 			return true;
 		}
 		
+		if ( n % 20 == 18 ) {
+			return true;
+		}
+		
 		return false;
 	}
 
