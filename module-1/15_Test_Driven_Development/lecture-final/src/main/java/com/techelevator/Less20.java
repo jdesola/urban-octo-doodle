@@ -10,5 +10,10 @@ package com.techelevator;
 */
 public class Less20 {
 
+	public boolean isLessThanMultipleOf20(int n) {
+		
+
+		return (n % 20 == 19 || n % 20 == 18);
+	}
 
 }
