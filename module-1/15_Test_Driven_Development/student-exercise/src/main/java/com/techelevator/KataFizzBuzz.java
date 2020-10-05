@@ -5,7 +5,7 @@ public class KataFizzBuzz {
 	public String fizzBuzz(Integer num) {
 		String fizzBuzzString = "";
 				
-		if (num % 3 == 0) {
+		if ((num % 3 == 0) || ( num.toString().contains("3")) ) {
 			fizzBuzzString = "Fizz";
 		} 
 		if (num % 5 == 0) {
@@ -14,7 +14,7 @@ public class KataFizzBuzz {
 		if (num % 3 == 0 && num % 5 == 0) {
 			fizzBuzzString = "FizzBuzz";
 		} 
-		if (num >= 1 && num <= 100 && (num % 3 != 0 && num % 5 != 0)) {
+		if (num >= 1 && num <= 100 && (num % 3 != 0 && num % 5 != 0) && !( num.toString().contains("3"))) {
 			fizzBuzzString = num.toString();
 		}
 		if (num < 1) {
