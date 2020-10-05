@@ -11,7 +11,7 @@ public class KataFizzBuzz {
 		if ((num % 5 == 0) || ( num.toString().contains("5")) ) {
 			fizzBuzzString = "Buzz";
 		} 
-		if (num % 3 == 0 && num % 5 == 0) {
+		if ( (num % 3 == 0 && num % 5 == 0) || ( num.toString().contains("3") && num.toString().contains("5")) ) {
 			fizzBuzzString = "FizzBuzz";
 		} 
 		if (num >= 1 && num <= 100 && (num % 3 != 0 && num % 5 != 0) && !( num.toString().contains("3") ) && !( num.toString().contains("5")) ) {
