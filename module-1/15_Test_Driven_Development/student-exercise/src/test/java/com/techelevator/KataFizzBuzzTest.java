@@ -25,4 +25,10 @@ public class KataFizzBuzzTest {
 		Assert.assertEquals("Buzz", kataFizzBuzz.fizzBuzz(fizzBuzzTester));
 	}
 	
+	@Test
+	public void fizzBuzzReturnsFizzBuzzForMultipleThreeAndFive() {
+		int fizzBuzzTester = 30;
+		Assert.assertEquals("FizzBuzz", kataFizzBuzz.fizzBuzz(fizzBuzzTester));
+	}
+	
 }
