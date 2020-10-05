@@ -16,6 +16,10 @@ public class WordSearch {
 		
 		String searchWord = in.nextLine();
 		
+		System.out.println("Should the search be case sensitive? (Y\\N)");
+		
+		String caseSensitiveSelection = in.nextLine().toUpperCase();
+		
 		File fileToSearch = new File( filePath );
 		
 		int lineNumber = 1;
@@ -23,6 +27,10 @@ public class WordSearch {
 			try(Scanner fileScanner = new Scanner( fileToSearch )) {
 				while (fileScanner.hasNextLine()) {
 					String lineToSearch = fileScanner.nextLine();
+					if ( caseSensitiveSelection.equals("N") ) {
+						lineToSearch = lineToSearch.toLowerCase();
+						searchWord = searchWord.toLowerCase();
+					}
 					if (lineToSearch.contains(searchWord)) {
 						System.out.printf("%d) %s\n", lineNumber, lineToSearch);
 					}
