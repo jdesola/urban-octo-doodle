@@ -14,7 +14,7 @@ public class KataFizzBuzzTest {
 	}
 	
 	@Test
-	public void fizzBuzz_returns_Fizz_for_multiple_3() {
+	public void fizzBuzzReturnsFizzForMultipleThree() {
 		int fizzBuzzTester = 24;
 		Assert.assertEquals("Fizz", kataFizzBuzz.fizzBuzz(fizzBuzzTester));
 	}
