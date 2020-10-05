@@ -52,7 +52,7 @@ public class KataFizzBuzzTest {
 	}
 	
 	@Test
-	public void fizzBuzzReturnsBuzzIfInputIsMultipleOfFiveOrContainsFive() {
+	public void fizzBuzzReturnBuzzIfInputIsMultipleOfFiveOrContainsFive() {
 		int fizzBuzzTester1 = 25;
 		int fizzBuzzTester2 = 10;
 		Assert.assertEquals("Testing for containing the number 5", "Buzz", kataFizzBuzz.fizzBuzz(fizzBuzzTester1));
