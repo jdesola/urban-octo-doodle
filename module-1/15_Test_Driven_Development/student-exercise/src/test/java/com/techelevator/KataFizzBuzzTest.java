@@ -31,4 +31,9 @@ public class KataFizzBuzzTest {
 		Assert.assertEquals("FizzBuzz", kataFizzBuzz.fizzBuzz(fizzBuzzTester));
 	}
 	
+	@Test
+	public void fizzBuzzReturnsInputAsStringIfNotMultipleOfThreeOrFive() {
+		int fizzBuzzTester = 22;
+		Assert.assertEquals("22", kataFizzBuzz.fizzBuzz(fizzBuzzTester));
+	}
 }
