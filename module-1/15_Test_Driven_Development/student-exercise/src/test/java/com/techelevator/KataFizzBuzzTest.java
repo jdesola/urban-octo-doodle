@@ -50,4 +50,12 @@ public class KataFizzBuzzTest {
 		Assert.assertEquals("Testing for containing the number 3", "Fizz", kataFizzBuzz.fizzBuzz(fizzBuzzTester1));
 		Assert.assertEquals("Testing for being a multiple of 3", "Fizz", kataFizzBuzz.fizzBuzz(fizzBuzzTester2));
 	}
+	
+	@Test
+	public void fizzBuzzReturnsBuzzIfInputIsMultipleOfFiveOrContainsFive() {
+		int fizzBuzzTester1 = 15;
+		int fizzBuzzTester2 = 10;
+		Assert.assertEquals("Testing for containing the number 5", "Fizz", kataFizzBuzz.fizzBuzz(fizzBuzzTester1));
+		Assert.assertEquals("Testing for being a multiple of 5", "Fizz", kataFizzBuzz.fizzBuzz(fizzBuzzTester2));
+	}
 }
