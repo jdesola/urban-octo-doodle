@@ -36,4 +36,10 @@ public class KataFizzBuzzTest {
 		int fizzBuzzTester = 22;
 		Assert.assertEquals("22", kataFizzBuzz.fizzBuzz(fizzBuzzTester));
 	}
+	
+	@Test
+	public void fizzBuzzReturnsEmptyStringIfInputNotBetween1And100() {
+		int fizzBuzzTester = 105;
+		Assert.assertEquals("", kataFizzBuzz.fizzBuzz(fizzBuzzTester));
+	}
 }
