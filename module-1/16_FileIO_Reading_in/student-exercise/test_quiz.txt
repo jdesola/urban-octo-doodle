@@ -1,2 +1,6 @@
 What color is the sky?|yellow|blue*|green|red
 A skeleton walks into a bar, and says to the bartender, "Give me a beer and a ..."|hair brush|dry erase marker|mop*|yo-yo
+What is Spider-Man's real name?|Pietro Maximoff|Tony Stark|Peter Parker*|Bruce Wayne
+What is the main ingredient in Beer?|Grapes|Grains*|Honey|Hops
+What is Linkin Park's first album?|Hybrid Theory*|Meteora|The Joshua Tree|City of Evil
+What is the airspeed velocity of an unladen swallow?|42|I don't know|African or European*|6
