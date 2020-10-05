@@ -2,8 +2,8 @@ package com.techelevator;
 
 public class KataFizzBuzz {
 	
-	public String fizzBuzz(int num) {
-		String fizzBuzzString = "";
+	public String fizzBuzz(Integer num) {
+		String fizzBuzzString = num.toString();
 		if (num % 3 == 0) {
 			fizzBuzzString = "Fizz";
 		}
