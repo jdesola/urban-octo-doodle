@@ -7,6 +7,11 @@ public class KataFizzBuzz {
 		if (num % 3 == 0) {
 			fizzBuzzString = "Fizz";
 		}
+		
+		if (num % 5 == 0) {
+			fizzBuzzString = "Buzz";
+		}
+		
 		return fizzBuzzString;
 	}
 
