@@ -23,7 +23,7 @@ public class Lecture {
 		System.out.print("Enter the path of a file or directory >>> ");
 		String path = userInput.nextLine();
 		File f = new File(path);
-
+		
 		/*
 		 * The File class allows us to inspect various attributes of a file system object
 		 */
