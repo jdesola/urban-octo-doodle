@@ -24,14 +24,16 @@ public class WordSearch {
 		
 		int lineNumber = 1;
 		
+		String lineToSearchLC = "";
+		
 			try(Scanner fileScanner = new Scanner( fileToSearch )) {
 				while (fileScanner.hasNextLine()) {
 					String lineToSearch = fileScanner.nextLine();
 					if ( caseSensitiveSelection.equals("N") ) {
-						lineToSearch = lineToSearch.toLowerCase();
+						lineToSearchLC = lineToSearch.toLowerCase();
 						searchWord = searchWord.toLowerCase();
 					}
-					if (lineToSearch.contains(searchWord)) {
+					if (lineToSearchLC.contains(searchWord)) {
 						System.out.printf("%d) %s\n", lineNumber, lineToSearch);
 					}
 					lineNumber++;

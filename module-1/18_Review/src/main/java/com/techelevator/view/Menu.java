@@ -14,6 +14,13 @@ public class Menu {
 		this.out = new PrintWriter(output);
 		this.in = new Scanner(input);
 	}
+	
+	public String getKeyFromUser() {
+		out.println("Enter a key: ");
+		out.flush();
+		String key = in.nextLine();
+		return key;
+	}
 
 
 }
