@@ -24,17 +24,22 @@ public class WordSearch {
 		
 		int lineNumber = 1;
 		
-		String lineToSearchLC = "";
+		
 		
 			try(Scanner fileScanner = new Scanner( fileToSearch )) {
 				while (fileScanner.hasNextLine()) {
 					String lineToSearch = fileScanner.nextLine();
+					String lineToSearchLC = "";
 					if ( caseSensitiveSelection.equals("N") ) {
 						lineToSearchLC = lineToSearch.toLowerCase();
 						searchWord = searchWord.toLowerCase();
-					}
-					if (lineToSearchLC.contains(searchWord)) {
-						System.out.printf("%d) %s\n", lineNumber, lineToSearch);
+						if (lineToSearchLC.contains(searchWord)) {
+							System.out.printf("%d) %s\n", lineNumber, lineToSearch);
+						}
+					} else {
+						if (lineToSearch.contains(searchWord)) {
+							System.out.printf("%d) %s\n", lineNumber, lineToSearch);
+						}
 					}
 					lineNumber++;
 				}

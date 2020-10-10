@@ -5,12 +5,12 @@ import java.io.*;
 public class FizzWriter {
 
 	public static void main(String[] args) throws IOException {
-		String filePath = "/Users/student/Development/joshuadesola-java-blue-material/module-1/17_FileIO_Writing_out/student-exercise";
+		
 		String fizzNumString = "300";
 		String fizzBuzzName = "FizzBuzz.txt";
 		String fileName = fizzNumString + " " + fizzBuzzName;
 
-		File fizzBuzzFile = new File(filePath, fileName);
+		File fizzBuzzFile = new File(fileName);
 		fizzBuzzFile.createNewFile();
 
 
