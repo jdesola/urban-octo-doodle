@@ -17,13 +17,13 @@ public class FizzWriter {
 		try (PrintWriter writer = new PrintWriter(fizzBuzzFile)) {
 			for (Integer i = 1; i <= Integer.parseInt(fizzNumString); i++) {
 				String fizzBuzz = "";
-				if (i % 3 == 0) {
+				if ((i % 3 == 0) || ( i.toString().contains("3"))) {
 					fizzBuzz += "Fizz";
 				} 
-				if (i % 5 == 0) {
+				if ((i % 5 == 0) || ( i.toString().contains("5"))) {
 					fizzBuzz += "Buzz";
 				} 
-				if (!( i % 3 == 0) && !( i % 5 == 0)) {
+				if ((i % 3 != 0 && i % 5 != 0) && !( i.toString().contains("3") ) && !( i.toString().contains("5"))) {
 					fizzBuzz = i.toString();
 				}
 				writer.println(fizzBuzz);
