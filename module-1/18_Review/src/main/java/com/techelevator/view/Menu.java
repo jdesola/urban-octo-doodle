@@ -22,5 +22,12 @@ public class Menu {
 		return key;
 	}
 
+	public String getKeyFromUser() {
+		out.println("Enter a key: ");
+		out.flush();
+		String key = in.nextLine();
+		return key;
+	}
+	
 
 }

@@ -13,7 +13,11 @@ public class VendingMachineCLI {
 	private Menu menu;
 	private CsvFileReader fileReader;
 	private ItemFileWriter fileWriter;
+<<<<<<< HEAD
 
+=======
+	
+>>>>>>> a819d1411d137ba103bd2559ae3972dc8848613d
 	public VendingMachineCLI(Menu menu) {
 		this.menu = menu;
 		this.fileReader = new CsvFileReader("vendingmachine.csv");
@@ -23,7 +27,11 @@ public class VendingMachineCLI {
 	public void run() throws IOException {
 		
 		Map<String, Item> items = fileReader.read();
+<<<<<<< HEAD
 		List<Item>	cart = new ArrayList<Item>();
+=======
+		List<Item> cart = new ArrayList<Item>();
+>>>>>>> a819d1411d137ba103bd2559ae3972dc8848613d
 		
 		while (true) {
 			String key = menu.getKeyFromUser();
@@ -35,7 +43,13 @@ public class VendingMachineCLI {
 				cart.add(selectedItem);
 			}
 		}
+<<<<<<< HEAD
 		fileWriter.write(cart);
+=======
+		
+		fileWriter.write(cart);
+		
+>>>>>>> a819d1411d137ba103bd2559ae3972dc8848613d
 	}
 
 	public static void main(String[] args) throws IOException {
