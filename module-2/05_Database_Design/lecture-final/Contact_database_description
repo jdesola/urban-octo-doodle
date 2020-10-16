@@ -1,0 +1,32 @@
+Contact
+    contact_id primary key
+    first_name
+    last_name
+
+Contact_Address
+    contact_id FK  PK
+    address_id FK  PK
+
+Address
+    address_id primary key
+    street_address_1
+    street_address_2
+    address_type
+    city
+    state
+    zip
+
+Phone
+    phone_id primary key
+    contact_id  FK
+    phone_number
+    number_type  (check constraint)
+    other_note
+
+Email
+    email_id primary key
+    contact_id FK
+    Email
+    email_type  (check constraint)
+    other_note
+    isPreferred
