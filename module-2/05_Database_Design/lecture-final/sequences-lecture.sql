@@ -1,5 +1,5 @@
 --CREATE DATABASE sequences;
---DROP DATABASE sequences;
+--DROP DATABASE clients;
 
 -- RUN in sequences Database:  createdb -U postgres sequences
 
@@ -41,7 +41,7 @@ INSERT INTO ourtable (id, name) VALUES (DEFAULT, 'Matt');
  INSERT INTO ourtable (name) VALUES ('John');
 
 -- Insert into the table with a sequence with a manual value  (CHANGE XX to the next correct value)
-INSERT INTO ourtable (id, name) VALUES (9, 'Matty');
+INSERT INTO ourtable (id, name) VALUES (7, 'Matty');
 
 -- Try to insert another value using DEFAULT or a SubQuery or by Omitting the column in the insert
 INSERT INTO ourtable (id, name) VALUES (DEFAULT, 'Vinny');
@@ -58,3 +58,14 @@ INSERT INTO ourtable (id, name) VALUES (DEFAULT, 'Rachelle');
 
 -- Drop the table, what happens to the sequence that was automatically created for it?
 DROP TABLE ourtable;
+
+CREATE TABLE classmate ( 
+    id serial primary key,
+    fullname varchar(100) not null,
+    gpa decimal(5,2),
+    age int,
+    takes_bus boolean DEFAULT false
+);
+
+INSERT INTO classmate (id, fullname, gpa, age) VALUES ( DEFAULT, 'John Fulton', 3.2, 29);
+SELECT * FROM classmate;
