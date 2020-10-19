@@ -16,7 +16,12 @@ public class SpringJDBCExample {
 		 * This datasource will be used for creating connections to the database. Below,
 		 * we provide the information required to make database connections
 		 */
+
 		BasicDataSource dvdstoreDataSource = new BasicDataSource();
+		/*
+		 * Connection string is a URI (like an internet address) that tells the
+		 * datasource what RDBMS to connect to, where it located, and what database to use
+		 */
 		dvdstoreDataSource.setUrl("jdbc:postgresql://localhost:5432/dvdstore");
 		dvdstoreDataSource.setUsername("postgres");
 		dvdstoreDataSource.setPassword("postgres1");
@@ -53,9 +58,9 @@ public class SpringJDBCExample {
 		}
 
 		// use the "update" method to run INSERT, UPDATE, and DELETE statements
-		String sqlCreateActor = "INSERT INTO actor(actor_id, first_name, last_name) " + "VALUES (?, ?, ?)";
+		String sqlCreateActor = "INSERT INTO actor(actor_id, first_name, last_name) " + "VALUES (DEFAULT, ?, ?)";
 
-		dvdstoreJdbcTemplate.update(sqlCreateActor, 1000, "Craig", "Castelaz");
+		dvdstoreJdbcTemplate.update(sqlCreateActor, "Craig", "Castelaz");
 
 		/*
 		 * The next example makes use of the world database, so we need a new DataSource
@@ -72,6 +77,10 @@ public class SpringJDBCExample {
 		 */
 		JdbcTemplate worldJdbcTemplate = new JdbcTemplate(worldDataSource);
 
+		/*
+		 * Using a Sequence by pre-generating it with nextval()
+		 */
+		
 		/*
 		 * Sequences are often used to generate a unique Id value prior to inserting a
 		 * new record.
@@ -91,5 +100,23 @@ public class SpringJDBCExample {
 				+ "VALUES(?, ?, ?, ?, ?)";
 
 		worldJdbcTemplate.update(sqlCreateNewCity, id, "Smallville", "USA", "Kansas", 45001);
+		
+		
+		/*
+		 * Using a Sequence with RETURNING
+		 */
+		
+		String sqlCreateNewCityReturning = "INSERT INTO city(id, name, countrycode, district, population) "
+				+ "VALUES(DEFAULT, ?, ?, ?, ?) RETURNING id";
+		
+		SqlRowSet insertResult = worldJdbcTemplate.queryForRowSet(sqlCreateNewCityReturning, "Smallville2", "USA", "Kansas", 45001 );
+		insertResult.next();
+		int cityId = insertResult.getInt("id");
+		
+		/*
+		 * Using a Sequence with Returning as Object
+		 */
+		Integer cityId2 = worldJdbcTemplate.queryForObject(sqlCreateNewCityReturning, Integer.class, "Smallville2", "USA", "Kansas", 45001 );
+		
 	}
 }
