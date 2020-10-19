@@ -9,8 +9,22 @@ import com.techelevator.contact.Contact;
 import com.techelevator.contact.ContactDAO;
 import com.techelevator.contact.JdbcContactDAO;
 
-public class ContactsDemo {
+public class ContactBookApp {
 
+	private static final Scanner in = new Scanner( System.in );
+	private ContactDAO contactDao;
+	
+	public ContactBookApp(ContactDAO contactDao) {
+		this.contactDao = contactDao;
+	}
+	
+	public void run() {
+		
+	}
+	
+	
+	
+	
 	public static void main(String[] args) {
 		
 		BasicDataSource dataSource = new BasicDataSource();
@@ -20,7 +34,9 @@ public class ContactsDemo {
 		
 		ContactDAO dao = new JdbcContactDAO( dataSource );
 		
-		// get all contacts 
+		ContactBookApp app = new ContactBookApp(dao);
+		app.run();
+		
 		List<Contact> contacts = dao.list();
 		
 		for (Contact contact : contacts) {
@@ -28,7 +44,7 @@ public class ContactsDemo {
 		}
 		
 		
-		Scanner in = new Scanner( System.in );
+		
 		
 		System.out.print("First Name >>>");
 		String firstName = in.nextLine();
@@ -36,7 +52,6 @@ public class ContactsDemo {
 		System.out.print("Last Name >>>");
 		String lastName = in.nextLine();
 		
-		// Create New Contact
 		Contact newContact = new Contact();
 		newContact.setFirstName( firstName );
 		newContact.setLastName( lastName );
@@ -49,7 +64,6 @@ public class ContactsDemo {
 		long id = in.nextLong();
 		in.nextLine();
 		
-		// Get a single Contact by Id
 		Contact retrievedContact = dao.getById( id );
 		
 		System.out.println( retrievedContact );
@@ -58,15 +72,8 @@ public class ContactsDemo {
 		id = in.nextLong();
 		in.nextLine();
 		
-		// Delete a contact by id
 		dao.delete( id );
 		
-		System.out.print("Last Name Search >>>");
-		String lastNameSearchTerm = in.nextLine();
-		
-		List<Contact> foundContacts = dao.searchByLastname(lastNameSearchTerm);	
-		
-		System.out.println(foundContacts);
 	}
 
 }

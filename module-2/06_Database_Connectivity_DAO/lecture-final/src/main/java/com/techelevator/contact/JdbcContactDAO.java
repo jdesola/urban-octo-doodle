@@ -16,6 +16,27 @@ public class JdbcContactDAO implements ContactDAO {
 		this.jdbcTemplate = new JdbcTemplate(dataSource);
 	}
 	
+	
+	
+	/*
+	 * CREATE methods
+	 */
+	@Override
+	public void create(Contact contact) {
+		String sql = "INSERT INTO contact (contact_id, first_name, last_name) VALUES (DEFAULT, ?, ?) RETURNING contact_id";
+		
+		SqlRowSet rows = jdbcTemplate.queryForRowSet(sql, contact.getFirstName(), contact.getLastName());
+		rows.next();
+		long newId = rows.getLong("contact_id");
+		
+		contact.setContactId( newId );
+		
+	}
+	
+	
+	/*
+	 * READ methods
+	 */
 	@Override
 	public List<Contact> list() {
 		
@@ -36,18 +57,6 @@ public class JdbcContactDAO implements ContactDAO {
 	}
 	
 	@Override
-	public void create(Contact contact) {
-		String sql = "INSERT INTO contact (contact_id, first_name, last_name) VALUES (DEFAULT, ?, ?) RETURNING contact_id";
-		
-		SqlRowSet rows = jdbcTemplate.queryForRowSet(sql, contact.getFirstName(), contact.getLastName());
-		rows.next();
-		long newId = rows.getLong("contact_id");
-		
-		contact.setContactId( newId );
-		
-	}
-	
-	@Override
 	public Contact getById(long contactId) {
 		Contact contact = null;
 		
@@ -63,12 +72,44 @@ public class JdbcContactDAO implements ContactDAO {
 	}
 	
 	@Override
+	public List<Contact> searchByLastname(String lastName) {
+		
+		List<Contact> contacts = new ArrayList<Contact>();
+		
+		String sql = "SELECT contact_id, first_name, last_name FROM contact WHERE last_name ILIKE ?";
+		
+		SqlRowSet rows = jdbcTemplate.queryForRowSet(sql, "%" + lastName + "%");
+		
+		while (rows.next()) {
+			
+			Contact contact = mapRowToContact( rows );
+			contacts.add(contact);
+		}
+		
+		return contacts;
+	}
+	
+	
+	/*
+	 * UPDATE methods
+	 */
+	@Override
+	public void update(Contact contact) {
+		String sql = "UPDATE contact SET first_name = ?, last_name = ? WHERE contact_id = ?";
+		jdbcTemplate.update(sql, contact.getFirstName(), contact.getLastName(), contact.getContactId());	
+	}
+	
+	
+	/*
+	 * DELETE methods
+	 */
+	@Override
 	public void delete(long contactId) {
 		String sql = "DELETE FROM contact WHERE contact_id = ?";
 		jdbcTemplate.update(sql, contactId);
 	}
 
-	
+
 	
 	
 	private Contact mapRowToContact( SqlRowSet row ) {
@@ -80,10 +121,6 @@ public class JdbcContactDAO implements ContactDAO {
 		
 		return contact;
 	}
-
-
-
-
 
 
 }
