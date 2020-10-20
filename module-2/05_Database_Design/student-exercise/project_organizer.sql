@@ -1,4 +1,5 @@
---CREATE DATABASE projects;
+--CREATE DATABASE project_organizer;
+
 
 DROP TABLE IF EXISTS project_employee;
 DROP TABLE IF EXISTS project;
@@ -139,7 +140,7 @@ VALUES (3, 8);
 
 SELECT * FROM department_employee;
 
-INSERT INTO project(project_name, is_project_started, project_start_date, is_project_complete, project_completion_dat)
+INSERT INTO project(project_name, is_project_started, project_start_date, is_project_complete, project_completion_date)
 VALUES ('Catering System', true, '10/09/2020', true, '10/11/2020');
 
 INSERT INTO project(project_name, is_project_started, project_start_date)
