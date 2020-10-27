@@ -1,5 +1,6 @@
 package com.techelevator.contact;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -114,6 +115,11 @@ public class JdbcContactDAO implements ContactDAO {
 	
 	private Contact mapRowToContact( SqlRowSet row ) {
 		Contact contact = new Contact();
+		
+//		if (row.getDate("date_column") != null) {
+//			LocalDate date = row.getDate("date_column").toLocalDate();
+//		}
+		
 		
 		contact.setContactId(  row.getLong("contact_id") );
 		contact.setFirstName(  row.getString("first_name") );

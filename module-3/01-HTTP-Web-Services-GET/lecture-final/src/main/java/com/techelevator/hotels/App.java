@@ -4,9 +4,16 @@ import java.util.Scanner;
 
 import org.springframework.web.client.RestTemplate;
 
+import com.techelevator.city.City;
+
 public class App {
 
-
+	private static final String API_BASE_URL = "http://localhost:3000/";
+	
+	// Spring Boot's RestTemplate is a full featured HTTP client that we can use to make
+	// REST WebApi requests and get a response.
+	private static RestTemplate restTemplate = new RestTemplate();
+	
 
     private void run() {
         Hotel[] hotels = null;
@@ -23,17 +30,17 @@ public class App {
             }
             System.out.println("");
             if (menuSelection == 1) {
-                System.out.println("Not implemented");
+                printHotels( requestHotels() );
             } else if (menuSelection == 2) {
-                System.out.println("Not implemented");
+                printReviews( requestReviews() );
             } else if (menuSelection == 3) {
-                System.out.println("Not implemented");
+                printHotel( requestHotelById(1) );
             } else if (menuSelection == 4) {
-                System.out.println("Not implemented");
+               printReviews( requestReviewsByHotelId( 1 ));
             } else if (menuSelection == 5) {
-                System.out.println("Not implemented");
+                printHotels( requestHotelsByStarRating( 3) );
             } else if (menuSelection == 6) {
-                System.out.println("Not implemented - Create a custom Web API query here");
+                System.out.println( requestCityFromTeleportOrg() );
             } else if (menuSelection == 0) {
                 continue;
             } else {
@@ -48,6 +55,45 @@ public class App {
         System.exit(0);
     }
 
+    private City requestCityFromTeleportOrg() {
+    	City city = restTemplate.getForObject("https://api.teleport.org/api/cities/geonameid:5128581/", City.class);
+    	return city;
+    }
+    
+    
+    private Hotel[] requestHotels() {
+    	String url = API_BASE_URL + "hotels";
+    	
+    											// URL of the API Endpoint, the DataType.class to return
+    	Hotel[] hotels = restTemplate.getForObject(url, Hotel[].class);
+    	
+    	
+    	return hotels;
+    }
+    
+    private Review[] requestReviews() {
+    	Review[] reviews = restTemplate.getForObject(API_BASE_URL + "reviews", Review[].class);
+    	return reviews;
+    }
+    
+    private Hotel requestHotelById( int id ) {
+    	Hotel hotel = restTemplate.getForObject(API_BASE_URL + "hotels/" + id, Hotel.class);
+    	return hotel;
+    }
+    
+    private Review[] requestReviewsByHotelId(int hotelId) {
+    	String url = API_BASE_URL + "hotels/" + hotelId + "/reviews";
+    	Review[] reviews = restTemplate.getForObject(url, Review[].class);
+    	return reviews;
+    }
+    
+    // http://localhost:3000/hotels?stars=3
+    private Hotel[] requestHotelsByStarRating( int stars ) {
+    	String url = API_BASE_URL + "hotels?stars=" + stars;
+    	Hotel[] hotels = restTemplate.getForObject( url, Hotel[].class );
+    	return hotels;
+    }
+    
     private void printGreeting() {
         System.out.println("");
         System.out.println("Welcome to Tech Elevator Hotels. Please make a selection: ");
