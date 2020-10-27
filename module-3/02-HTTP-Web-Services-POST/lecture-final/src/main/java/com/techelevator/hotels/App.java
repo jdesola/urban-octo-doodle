@@ -15,6 +15,7 @@ public class App {
 
         ConsoleService consoleService = new ConsoleService();
         HotelService hotelService = new HotelService(API_BASE_URL);
+              
 
         while (menuSelection != 0) {
             menuSelection = consoleService.printMainMenu();

@@ -36,6 +36,25 @@ public class HotelService {
 	  }
 	  
 	  // API Code goes here
+	  // Create the Header and set the ContentType to application/json
+	  HttpHeaders headers = new HttpHeaders();
+	  headers.setContentType(MediaType.APPLICATION_JSON);
+	  // Create the request and pass it the header and the data for the message body
+	  HttpEntity<Reservation> request = new HttpEntity<>(reservation, headers);
+	  
+	  // http://localhost:3000/hotels/1/reservations
+	  String url = BASE_URL;  			//http://localhost:3000/
+	  url += "hotels/";       			//http://localhost:3000/hotels/
+	  url += reservation.getHotelID();  //http://localhost:3000/hotels/2
+	  url += "/reservations";			//http://localhost:3000/hotels/2/reservations
+	  
+	  try {
+		  reservation = restTemplate.postForObject(url, request, Reservation.class);
+	  } catch (RestClientResponseException e) {
+		  console.printError(e.getRawStatusCode() + " : " + e.getStatusText());
+	  } catch (ResourceAccessException e) {
+		  console.printError( e.getMessage() );
+	  }
 	  
 	  return reservation;
   }
@@ -55,6 +74,20 @@ public class HotelService {
 
 	  // API Code goes here
 	  
+	  HttpHeaders headers = new HttpHeaders();
+	  headers.setContentType( MediaType.APPLICATION_JSON );
+	  
+	  HttpEntity<Reservation> request = new HttpEntity<>(reservation, headers);
+	  
+	  try {
+		  restTemplate.put(BASE_URL + "reservations/" + reservation.getId(), request);
+	  } catch (RestClientResponseException e) {
+		  console.printError(e.getRawStatusCode() + " : " + e.getStatusText());
+	  } catch (ResourceAccessException e) {
+		  console.printError( e.getMessage() );
+	  }
+	  
+	  
 	  return reservation;
   }
 
@@ -65,6 +98,13 @@ public class HotelService {
    */
   public void deleteReservation(int id) {
 	  // API Code goes here
+	  try {
+		  restTemplate.delete(BASE_URL + "reservations/" + id);
+	  } catch (RestClientResponseException e) {
+		  console.printError(e.getRawStatusCode() + " : " + e.getStatusText());
+	  } catch (ResourceAccessException e) {
+		  console.printError( e.getMessage() );
+	  }
   }
 
 
@@ -76,8 +116,16 @@ public class HotelService {
    */
   public Hotel[] listHotels() {
     Hotel[] hotels = null;
-    
+    // BASE_URL http://localhost:3000/
     // API Code goes here
+    try {
+    	hotels = restTemplate.getForObject(BASE_URL + "hotels", Hotel[].class);
+    } catch (RestClientResponseException e) {
+    	console.printError( "Raw Status Code: " + e.getRawStatusCode() );
+    	console.printError("Status Text: " + e.getStatusText() );
+    } catch (ResourceAccessException e) {
+    	console.printError( e.getMessage() );
+    }
     
     return hotels;
   }
@@ -90,8 +138,20 @@ public class HotelService {
    */
   public Hotel getHotel(int id) {
     Hotel hotel = null;
-    
-    // API Code goes here
+    // http://localhost:3000/hotels/3
+    String url = BASE_URL;  // http://localhost:3000/
+    url += "hotels/";       // http://localhost:3000/hotels
+    url += id; 				// http://localhost:3000/hotels/2
+    		
+    		
+    try {	
+    	hotel = restTemplate.getForObject(url, Hotel.class);
+    } catch (RestClientResponseException e)  {  // Catches Resource exceptions from the API like 404, 401, 403, 500, etc.
+    	console.printError(e.getRawStatusCode() + " " + e.getStatusText());
+    } catch (ResourceAccessException e) {
+    	console.printError( e.getMessage() );
+    }
+
     
     return hotel;
   }
