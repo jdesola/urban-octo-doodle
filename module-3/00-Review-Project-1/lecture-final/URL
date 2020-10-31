@@ -1,0 +1,24 @@
+URL
+HTTP Methods for the URL  (POST, PUT, GET, DELETE)
+Return Status
+
+/reviews/id  
+GET
+200 - Return a single id
+404 - if review not found
+
+------------------------------
+
+/contacts                       - List of contacts
+    GET, POST
+/contacts/:id                   - Single contacts
+    GET, PUT, DELETE
+/contacts/:id/addresses?type
+    GET, POST
+/contacts/:id/addresses/:id
+    GET, PUT, DELETE
+/contacts/:id/phones?type
+/contacts/:id/phones/:id
+/contacts/:id/emails?type
+/contacts/:id/emails/:id
+

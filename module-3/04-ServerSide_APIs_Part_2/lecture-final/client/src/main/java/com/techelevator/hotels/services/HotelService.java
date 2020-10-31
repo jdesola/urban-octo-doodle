@@ -93,7 +93,7 @@ public class HotelService {
    */
   public Hotel[] listHotels() {
     Hotel[] hotels = null;
-    try {
+    try {  
       hotels = restTemplate.getForObject(BASE_URL + "hotels", Hotel[].class);
     } catch (RestClientResponseException ex) {
       // handles exceptions thrown by rest template and contains status codes
