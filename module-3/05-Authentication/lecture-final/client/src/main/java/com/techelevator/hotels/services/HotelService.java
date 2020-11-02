@@ -35,8 +35,25 @@ public class HotelService {
       throw new HotelServiceException(INVALID_RESERVATION_MSG);
     }
 
-    // TODO: Fix Me
-    throw new HotelServiceException("NOT IMPLEMENTED");
+    // 1. Creae a Request Entity with a header that included Authorization and the Token
+    HttpHeaders headers = new HttpHeaders();
+    headers.setContentType( MediaType.APPLICATION_JSON );
+    headers.setBearerAuth( AUTH_TOKEN );
+    HttpEntity<Reservation> request = new HttpEntity<>(reservation, headers);
+    
+    // 2. Build the URL
+    String url = BASE_URL + "/hotels/" + reservation.getHotelID() + "/reservations";
+    
+    // 3. Make request (GET, POST, PUT, or DELETE) with exchange()
+    try {
+    						  // arguments: url, Web Method, HttpEntity Request with the header, the class to deserialize to
+    						  // getBody() needs to be called to deserialize the response
+    	reservation = restTemplate.exchange(url,  HttpMethod.POST, request, Reservation.class).getBody();  
+    
+    } catch (RestClientResponseException e) {
+    	throw new HotelServiceException(e.getRawStatusCode() + " : " + e.getResponseBodyAsString() );
+    }
+    return reservation;
   }
 
   /**
