@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
+@PreAuthorize("isAuthenticated()")  // Requires user to be authenticated to use anything in this class
 public class HotelController {
 
     private HotelDAO hotelDAO;
@@ -33,6 +34,7 @@ public class HotelController {
      *
      * @return a list of all hotels in the system
      */
+    @PreAuthorize("permitAll")   // Any user can access this method, even when not authenticated
     @RequestMapping(path = "/hotels", method = RequestMethod.GET)
     public List<Hotel> list() {
         return hotelDAO.list();
@@ -114,10 +116,13 @@ public class HotelController {
      * @param id
      * @throws ReservationNotFoundException
      */
+    // The Principal object can be added to the method's arguments and Spring will
+    // then pass a reference to that object when calling our method.
+    @PreAuthorize("hasRole('ADMIN')")  // Verifies authorization to only allow users with a specific role
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @RequestMapping(path = "/reservations/{id}", method = RequestMethod.DELETE)
-    public void delete(@PathVariable int id) throws ReservationNotFoundException {
-        auditLog("delete", id, "username");
+    public void delete(@PathVariable int id, Principal principal) throws ReservationNotFoundException {
+        auditLog("delete", id, principal.getName());
         reservationDAO.delete(id);
     }
 
