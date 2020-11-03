@@ -22,8 +22,10 @@ private static final String API_BASE_URL = "http://localhost:8080/";
 	private static final String[] LOGIN_MENU_OPTIONS = { LOGIN_MENU_OPTION_REGISTER, LOGIN_MENU_OPTION_LOGIN, MENU_OPTION_EXIT };
 	
 	private static final String MAIN_MENU_OPTION_LIST_CONTACTS = "List Contacts";
+	private static final String MAIN_MENU_OPTION_GET_CONTACT_BY_ID = "Get Contact by Id";
+	private static final String MAIN_MENU_OPTION_ADD_CONTACT = "Add Contact";
 	private static final String MAIN_MENU_OPTION_LOGIN = "Login as different user";
-	private static final String[] MAIN_MENU_OPTIONS = { MAIN_MENU_OPTION_LIST_CONTACTS, MAIN_MENU_OPTION_LOGIN, MENU_OPTION_EXIT };
+	private static final String[] MAIN_MENU_OPTIONS = { MAIN_MENU_OPTION_LIST_CONTACTS, MAIN_MENU_OPTION_GET_CONTACT_BY_ID, MAIN_MENU_OPTION_ADD_CONTACT, MAIN_MENU_OPTION_LOGIN, MENU_OPTION_EXIT };
 	
     private AuthenticatedUser currentUser;
     private ConsoleService console;
@@ -47,7 +49,7 @@ private static final String API_BASE_URL = "http://localhost:8080/";
 	
 		registerAndLogin();
 	
-		this.contactService = new ContactService(API_BASE_URL);
+		this.contactService = new ContactService(API_BASE_URL, currentUser);
 		
 		mainMenu();
 	}
@@ -57,6 +59,10 @@ private static final String API_BASE_URL = "http://localhost:8080/";
 			String choice = (String)console.getChoiceFromOptions(MAIN_MENU_OPTIONS);
 			if(MAIN_MENU_OPTION_LIST_CONTACTS.equals(choice)) {
 				listAllContacts();
+			} else if (MAIN_MENU_OPTION_GET_CONTACT_BY_ID.equals(choice)) {
+				getContactById();
+			} else if ( MAIN_MENU_OPTION_ADD_CONTACT.equals(choice)) {
+				addContact();
 			} else if(MAIN_MENU_OPTION_LOGIN.equals(choice)) {
 				login();
 			} else {
@@ -66,6 +72,29 @@ private static final String API_BASE_URL = "http://localhost:8080/";
 		}
 	}
 
+	private void addContact() {
+		Contact contact = new Contact();
+		contact.setFirstName( console.getUserInput("First Name >>>" ) );
+		contact.setLastName( console.getUserInput("Last Name >>>") );
+		try {
+			contactService.add(contact);
+		} catch (RestClientResponseException e) {
+			console.print400Status(e);
+		}
+		
+	}
+	
+	private void getContactById() {
+		try {
+			int contactId = console.getUserInputInteger("Contact Id >>>");
+			Contact contact = contactService.getById(contactId);
+			console.printContact( contact );
+		} catch (RestClientResponseException e) {
+			console.printRestException(e);
+		}
+		
+	}
+	
 	private void listAllContacts() {
 		try {
 			List<Contact> contacts = contactService.list();
