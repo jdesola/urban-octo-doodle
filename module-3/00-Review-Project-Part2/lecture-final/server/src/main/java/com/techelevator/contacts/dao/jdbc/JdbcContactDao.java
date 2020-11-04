@@ -31,6 +31,25 @@ public class JdbcContactDao implements ContactDao{
 		return contacts;
 	}
 
+	@Override
+	public Contact get(long contactId) {
+		Contact contact = null;
+		String sql = "SELECT contact_id, first_name, last_name FROM contact WHERE contact_id = ?";
+		SqlRowSet rows = jdbcTemplate.queryForRowSet(sql, contactId);
+		if (rows.next()) {
+			contact = mapRowToContact(rows);
+		}
+		return contact;
+	}
+	
+	@Override
+	public Contact add(Contact contact) {
+		String sql = "INSERT INTO contact (contact_id, first_name, last_name) VALUES (DEFAULT, ?, ?) RETURNING contact_id";
+		Integer id = jdbcTemplate.queryForObject(sql, Integer.class, contact.getFirstName(), contact.getLastName());
+		contact.setContactId(id);
+		return contact;
+	}
+	
 	private Contact mapRowToContact(SqlRowSet row) {
 		Contact contact = new Contact();
 		contact.setContactId( row.getInt("contact_id"));
@@ -38,5 +57,9 @@ public class JdbcContactDao implements ContactDao{
 		contact.setLastName( row.getString("last_name") );
 		return contact;
 	}
+
+
+
+
 
 }

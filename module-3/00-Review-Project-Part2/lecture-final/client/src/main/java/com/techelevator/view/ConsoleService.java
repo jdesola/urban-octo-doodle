@@ -79,6 +79,7 @@ public class ConsoleService {
 		return result;
 	}
 	
+	
 	  public void printContacts(List<Contact> contacts) {
 		  
 		  
@@ -92,6 +93,13 @@ public class ConsoleService {
 		  
 	  }
 	  
+	  public void printContact(Contact contact) {
+		  System.out.printf("%-10s%-36s%n", "Id", "Name");
+		  System.out.printf("%-10s%-36s%n", "-----", "-----");
+		  System.out.printf("%-10s%-36s%n", 
+				  contact.getContactId(), contact.getFullName());
+	  }
+	  
 	  public void printRestException(RestClientResponseException e) {
 		  System.out.println("An error has occured: ");
 		  System.out.println(e.getRawStatusCode() + " : " + e.getStatusText() );
@@ -99,5 +107,11 @@ public class ConsoleService {
 	  
 	  public void printResourceAccessException(String message) {
 		  System.out.println("Unable to connect to API: " + message);
+	  }
+	  
+	  public void print400Status(RestClientResponseException e) {
+		  System.out.println("Unable to add contact");
+		  System.out.println("Error: " +e.getRawStatusCode() + " : " + e.getStatusText() );
+		  System.out.println(e.getResponseBodyAsString());
 	  }
 }
