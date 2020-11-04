@@ -39,4 +39,17 @@ public class JdbcContactDao implements ContactDao{
 		return contact;
 	}
 
+	@Override
+	public Contact get(int contactId) {
+		Contact contact = new Contact();
+		
+		String sql = "SELECT contact_id, first_name, last_name FROM contact WHERE contact_id = ?";
+		SqlRowSet row = jdbcTemplate.queryForRowSet(sql, contactId);
+		
+		row.next();
+		contact = mapRowToContact(row);
+		
+		return contact;
+	}
+
 }

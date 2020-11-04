@@ -47,7 +47,7 @@ private static final String API_BASE_URL = "http://localhost:8080/";
 	
 		registerAndLogin();
 	
-		this.contactService = new ContactService(API_BASE_URL);
+		this.contactService = new ContactService(API_BASE_URL, currentUser);
 		
 		mainMenu();
 	}
