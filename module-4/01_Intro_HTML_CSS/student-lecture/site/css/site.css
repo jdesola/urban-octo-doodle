@@ -1,0 +1,19 @@
+img {
+    height: 200px;
+    max-width: 400px;
+
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: hotpink;
+}
+
+h1 {
+    font-size: 48px;
+    color: #29F70A;
+}
+
+h3 {
+    color: darkolivegreen;
+}

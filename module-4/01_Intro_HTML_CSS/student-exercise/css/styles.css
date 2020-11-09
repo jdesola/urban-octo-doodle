@@ -1,0 +1,70 @@
+body {
+    background-color: red;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+}
+
+h1 {
+    text-align: center;
+    font-size: 40px;
+}
+
+h2 {
+
+    text-decoration: underline;
+}
+
+a {
+    font-size: 20px;
+    color: lightblue;
+}
+
+p {
+    font-size: 20px;
+}
+
+th {
+    font-size: 20px;
+    text-align: left;
+}
+
+td {
+    font-size: 14px;
+    padding-right: 8px;
+    text-align: left;
+    line-height: 20px;
+}
+
+img {
+    max-width: 920px;
+    float: left;
+    padding-right: 20px;
+    
+}
+
+main {
+    background-color: black;
+}
+
+ul {
+    text-indent: 17px;
+}
+
+th {
+    padding-right: 20px;
+    padding-bottom: 5px;
+}
+
+div {
+    padding-bottom: 31.5px;
+    font-size: 24px;
+}
+
+input {
+    font-size: 20px;
+}
+
+label {
+    padding-right: 10px;
+}
+
