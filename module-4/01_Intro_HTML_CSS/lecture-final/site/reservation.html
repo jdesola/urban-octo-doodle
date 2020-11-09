@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Make a Reservation</title>
+    <link rel="stylesheet" href="css/site.css" />
+</head>
+<body>
+    <header>
+        <h1>Bits & Bytes</h1>
+        <p>Welcome to the internet's best restaurant</p>
+    </header>
+    <nav>
+        <a href="index.html">View Menu</a>
+    </nav>
+    <main>
+        <h2>Reservation Form</h2>
+        <form method="POST" action="/api/reservations">
+            <div>
+                <label for="reservationName">Name:</label>
+                <input id="reservationName" name="name" type="text" />
+            </div>
+            <div>
+                <label for="numberOfGuests">Number of guests:</label>
+                <input id="numberOfGuests" name="guests" type="number" />
+            </div>
+            <div>
+                <label for="reservationDate">Date:</label>
+                <input id="reservationDate" name="date" type="date" />
+            </div>
+            <div>
+                <label for="reservationTime">Time:</label>
+                <input id="reservationTime" name="time" type="time" />
+            </div>
+            <div>
+                <label for="specialOccasion">Special Occasion:</label>
+                <input id="specialOccasion" name="specialOccasion" type="checkbox" />
+            </div>
+            <div>
+                <label for="location">Location:</label>
+                <select id="location" name="location">
+                    <option value="1">Location One</option>
+                    <option value="2">Location Two</option>
+                </select>
+            </div>
+            <div>
+                <input type="radio" id="patio" name="seatingLocation" value="p">
+                <label for="patio">Patio</label>
+                <input type="radio" id="indoor" name="seatingLocation" value="i">
+                <label for="indoor">Indoor</label>
+            </div>
+            <div>
+                <label for="notes">Notes:</label>
+                <textarea id="notes" name="notes"></textarea>
+            </div>
+            <div>
+                <input type="submit" />
+            </div>
+        </form>
+    </main>
+</body>
+</html>
