@@ -12,7 +12,7 @@ div {
     background-color: gray;
 }
 
-.descendentOne {
+#idExample .descendentOne {
     background-color: orange;
 }
 
@@ -27,5 +27,27 @@ span {
     margin: 10px;
     padding: 10px;
 }
+/* 
+#divThree > .spanOne + span {
+    background-color: blue;
+} */
 
+/* .spanTwo ~ span {
+    background-color: blue;
+} */
 
+/* div :first-child {
+    background-color: blue;
+} */
+
+/* div :last-child {
+    background-color: blue;
+} */
+
+/* div :nth-child(2) {
+    background-color: blue;
+} */
+
+div:hover {
+    background-color: blue;
+}
