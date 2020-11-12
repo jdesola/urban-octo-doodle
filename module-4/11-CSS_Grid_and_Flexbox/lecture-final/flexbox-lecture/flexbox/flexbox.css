@@ -7,9 +7,28 @@ section#flex-example {
     width: 75%;
     background-color: gray;
     margin: auto;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
-
+div#one {
+    order: 2;
+    flex-basis: 200px;
+    flex-shrink: .6;
+}
+div#two {
+    order: 3;
+    flex-basis: 125px;
+    align-self: center;
+}
+div#three {
+    order: 1;
+    flex-basis: 90px;
+    flex-grow: 2;
+}
 
 
 
