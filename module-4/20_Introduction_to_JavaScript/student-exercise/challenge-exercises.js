@@ -12,6 +12,45 @@
         iqTest("2 2 4 6") → 0 // all numbers are even, therefore there is no position of an odd number
 */
 
+function iqTest(numbers) {
+    let countOdd = 0;
+    let countEven = 0;
+    let numberIndex;
+
+
+    let numbersArray = numbers.split(" ");
+
+    if (numbers.length == 0) {
+        numberIndex = 0;
+    }
+
+    for (let i = 0; i < numbersArray.length; i++) {
+        if (numbersArray[i] % 2 == 1) {
+            countOdd++;
+        }
+        if (numbersArray[i] % 2 == 0) {
+            countEven++;
+        }
+    }
+
+    for (let i = 0; i < numbersArray.length; i++) {
+        if (countEven > countOdd) {
+            if (numbersArray[i] % 2 == 1) {
+                numberIndex = i + 1;
+            }
+        }
+        if (countOdd > countEven) {
+            if (numbersArray[i] % 2 == 0) {
+                numberIndex = i + 1;
+            }
+        }
+        if ((countEven == numbersArray.length) || (countOdd == numbersArray.length)) {
+            numberIndex = 0;
+        }
+    }
+    return numberIndex;
+}
+
 /*
 2. **titleCase** Write a function that will convert a string into title case, given an optional 
     list of exceptions (minor words). The list of minor words will be given as a string with each 
@@ -28,3 +67,45 @@ argument is unused.
 		titleCase('THE WIND IN THE WILLOWS', 'The In') // should return: 'The Wind in the Willows'
         titleCase('the quick brown fox') // should return: 'The Quick Brown Fox'
 */
+
+function titleCase(arg1, arg2) {
+    let arg1Caps = "";
+    if (arg2 == undefined) {
+        arg1 = arg1.toLowerCase();
+        let arg1Array = arg1.split(" ");
+        for (let i = 0; i < arg1Array.length; i++) {
+            let currentWord = arg1Array[i];
+            currentWord = currentWord[0].toUpperCase() + currentWord.substr(1);
+            if (i < arg1Array.length - 1) {
+                arg1Caps += currentWord + " ";
+            } else {
+                arg1Caps += currentWord;
+            }
+        }
+
+    } else {
+        arg1 = arg1.toLowerCase();
+        let arg1Array = arg1.split(" ");
+        arg2 = arg2.toLowerCase();
+        let arg2Array = arg2.split(" ");
+        for (let i = 0; i < arg1Array.length; i++) {
+            let currentWord = arg1Array[i];
+            for (let j = 0; j < arg2Array.length; j++) {
+                if ((currentWord.toLowerCase() == arg2Array[j]) && (i != 0)) {
+                    currentWord = currentWord.toLowerCase();
+                    break;
+                } else {
+                    currentWord = currentWord[0].toUpperCase() + currentWord.substr(1);
+                }
+                
+            }
+            if (i < arg1Array.length - 1) {
+                arg1Caps += currentWord + " ";
+            } else {
+                arg1Caps += currentWord;
+            }   
+        }
+        
+    }
+    return arg1Caps;
+}
