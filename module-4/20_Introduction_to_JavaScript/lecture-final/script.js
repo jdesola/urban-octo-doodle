@@ -1,3 +1,12 @@
+let thisVariableIsInGlobalScope;
+
+function scope() {
+  let thisVariableIsInFunctionScope;
+  if (true) {
+    let thisVariableIsInBlockScope;
+  }
+}
+
 /*
     Example of a multi-line comment just like in C#/Java
 */
@@ -10,8 +19,36 @@
  */
 function variables() {
   // Declares a variable where the value cannot be changed
+  const daysPerWeek = 7;
+  console.log(`There are ${daysPerWeek} days in the week1`);
   // Declares a variable those value can be changed
+  let daysPerMonth = 30;
+  console.log(`There are ${daysPerMonth} days in the month`);
+
   // Declares a variable that will always be an array
+  let emptyArray = [];  // defines an empty array
+  const weekdays = [ "Monday", "Tuesday", "Wednesday", "Thursday", "Friday" ];
+  weekdays.push("Saturday");
+  
+  console.log(weekdays);
+  console.table(weekdays);
+
+  daysPerMonth = 28;
+  console.log(`There are ${daysPerMonth} days in February`);
+
+  // undefined when no value has been assigned
+  let x;
+  console.log(x);  
+  // null when explicitly set to null
+  x = null;
+  console.log(x); 
+  // NaN when a calculation returns an invalid value
+  x = 0/0;
+  console.log(x);
+
+  // Infinity when a calculation returns an infinite value
+  x = 1/0;
+  console.log(x);
 }
 
 /**
@@ -70,14 +107,37 @@ function objects() {
       "Milton Waddams",
       "Samir Nagheenanajar",
       "Michael Bolton"
-    ]
+    ],
+    aFunction: function(x) {
+      console.log("do something about " + x + " here");
+    }
   };
 
+  person.aFunction('abc');
+
   // Log the object
-
+  console.table(person);
   // Log the first and last name
-
+  console.table(person.firstName);
+  console.table(person['firstName']);
+  person['firstName'] = 'John';
+  person.firstName = 'Steve';
+  person.frstName = 'Rachelle';
+  console.table(person);
+  
   // Log each employee
+  for (let i = 0; i < person.employees.length; i++) {
+    console.log(`Employee ${i + 1} is ${person.employees[i]}`);
+  }
+
+  person.toString = function() {
+      return `${this.lastName}, ${this.firstName}`;
+  }
+  console.log(person.toString());
+
+  console.table(person);
+
+  console.log( person.toString );
 }
 
 /*
@@ -113,6 +173,10 @@ function mathFunctions() {
   console.log("Math.floor(1.99) : " + Math.floor(1.99));
   console.log("Math.ceil(1.01) : " + Math.ceil(1.01));
   console.log("Math.random() : " + Math.random());
+
+
+  console.log("isNaN(0) : " + isNaN(0) );
+  console.log("isNaN('a') : " + isNaN('a') );
 }
 
 /*
@@ -138,4 +202,6 @@ function stringFunctions(value) {
         - trim()
         - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String
     */
+   console.log(`.substr(1,3) = ${value.substr(1,3)}`);
+   console.log(`.substring(1,3) = ${value.substring(1,3)}`);
 }
