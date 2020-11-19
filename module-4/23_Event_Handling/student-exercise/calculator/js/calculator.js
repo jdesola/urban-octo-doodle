@@ -72,27 +72,47 @@ function clear() {
 }
 
 // add event listener for when the DOM is loaded
-document.addEventListener('LOADED_EVENT_GOES_HERE', () => {
+document.addEventListener('DOMContentLoaded', () => {
 
   // set the variable called display equal to the display element
+  display = document.getElementById('display');
   // HINT: use its id #display to get a reference to it
 
+
   // get a reference to all of the numbers
-  // loop over each of the numbers
+  let allNumbers = document.getElementsByClassName('number');
+  // loop over each of the numbers 
+  let allNumbersArray = Array.from(allNumbers);
   // add a click event listener to each number to call the function clickNumber
+  allNumbersArray.forEach((arrayNumber => {
+    arrayNumber.addEventListener('click', clickNumber);
+  }));
+  
 
   // get a reference to the decimal point button
+  let decimalPoint = document.querySelector('.decimal');
   // add a click event listener to call the function clickNumber
+  decimalPoint.addEventListener('click', clickNumber);
   // the decimal point is part of the number so append it
 
   // get a reference to the all clear button
-  // add a click event listener to call the function clear  
+  let allClear = document.querySelector('.all-clear');
+  // add a click event listener to call the function clear
+  allClear.addEventListener('click', clear); 
 
   // get a reference to all of the operators;
+  let allOperators = document.getElementsByClassName('operator');
+  let allOperatorsArray = Array.from(allOperators);
   // loop over each of the operators
-  // add a click event listener to each operator to call the function clickOperator
+  allOperatorsArray.forEach((operator) => {
+    // add a click event listener to each operator to call the function clickOperator
+    operator.addEventListener('click', clickOperator);
+  });
+  
 
   // add click event listener for the equal sign
+  let equalSign = document.querySelector('.equal-sign');
+  equalSign.addEventListener('click', performOperation);
   // should call the function performOperation
 
 });
