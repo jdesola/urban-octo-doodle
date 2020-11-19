@@ -14,4 +14,18 @@ function addOrange() {
 document.addEventListener('DOMContentLoaded', () => {
 	const button = document.getElementById('btnAddOrange');
 	button.addEventListener('click', addOrange);
+
+	document.getElementById('btnAddAnyColor').addEventListener('click', () => {
+		const li = document.createElement('li');
+		li.innerText = document.getElementById('colorpicker').value;
+		colors.appendChild(li);
+	});
+
+	colors.addEventListener('dblclick', event => {
+		if (event.target.nodeName.toLowerCase() === "li") {
+			event.target.style.backgroundColor = 'transparent';
+		}
+	});
+
+
 });

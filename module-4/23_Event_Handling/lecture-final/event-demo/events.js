@@ -27,6 +27,10 @@ document.addEventListener('DOMContentLoaded', () => {
     //     event.stopPropagation();
     // });
 
+    inputField.addEventListener('click', (event) => {
+        event.stopPropagation();
+    });
+
     /*
      * The keydown event occurs when the user presses a key
      *   It repeats as long as the key is held down
@@ -94,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
      */
     form.addEventListener('submit', (event) => {
         h2.innerText = "Submitting the form!!!";
-        //event.preventDefault();
+        event.preventDefault();
     });
 
     /*
