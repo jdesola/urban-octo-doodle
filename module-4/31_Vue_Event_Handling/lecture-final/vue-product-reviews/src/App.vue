@@ -1,19 +1,16 @@
 <template>
   <div id="app">
     <product-review></product-review>
-    <add-email></add-email>
   </div>
 </template>
 
 <script>
 import ProductReview from './components/ProductReview'
-import AddEmail from './components/AddEmail'
 
 export default {
   name: 'App',
   components: {
     ProductReview,
-    AddEmail
   }
 }
 </script>
