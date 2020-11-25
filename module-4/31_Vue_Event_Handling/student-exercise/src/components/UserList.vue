@@ -15,7 +15,7 @@
       <tbody>
         <tr>
           <td>
-            <input type="checkbox" id="selectAll" v-on:click="selectAllUsers"  v-model="allSelected"/>
+            <input type="checkbox" id="selectAll" v-on:click="selectAll"  v-model="allSelected"/>
           </td>
           <td>
             <input type="text" id="firstNameFilter" v-model="filter.firstName" />
@@ -44,7 +44,7 @@
           v-bind:class="{ disabled: user.status === 'Disabled' }"
         >
           <td>
-            <input type="checkbox" v-bind:id="user.id" v-bind:value="user.id"  v-model="selectedUserIds" v-on:change="checkIfAllUsersSelected"/>
+            <input type="checkbox" v-bind:id="user.id" v-bind:value="user.id"  v-model="selectedUserIDs" v-on:change="checkIfAllUsersSelected"/>
           </td>
           <td>{{ user.firstName }}</td>
           <td>{{ user.lastName }}</td>
@@ -95,7 +95,7 @@ export default {
   data() {
     return {
       allSelected: false,
-      selectedUserIds:  [],
+      selectedUserIDs:  [],
       showForm: false,
       filter: {
         firstName: "",
@@ -193,27 +193,29 @@ export default {
      
     },
     enableSelectedUsers() {
-      this.selectedUserIds.forEach(userId => {
+      this.selectedUserIDs.forEach(userId => {
         this.users.forEach(user => {
           if (userId === user.id) {
             user.status = 'Active';
           }
         });
       });
-    this.selectedUserIds = [];
+    this.selectedUserIDs = [];
+    this.allSelected = false;
     },
     disableSelectedUsers() {
-      this.selectedUserIds.forEach(userId => {
+      this.selectedUserIDs.forEach(userId => {
         this.users.forEach(user => {
           if (userId === user.id) {
             user.status = 'Disabled';
           }
         });
       });
-    this.selectedUserIds = [];
+    this.selectedUserIDs = [];
+    this.allSelected = false;
     },
     deleteSelectedUsers() {
-      this.selectedUserIds.forEach(userId => {
+      this.selectedUserIDs.forEach(userId => {
         let i = 0;
         this.users.forEach(user => {
           if (userId === user.id) {
@@ -226,24 +228,25 @@ export default {
         )
       }
       )
-      this.selectedUserIds = [];
+      this.selectedUserIDs = [];
+      this.allSelected = false;
   },
-  selectAllUsers() {
+  selectAll() {
     if (this.allSelected == true) {
-        this.selectedUserIds = [];
+        this.selectedUserIDs = [];
         this.allSelected = false;
       
     } else if (this.allSelected == false) {
       this.users.forEach( (user) => {
-        if (!this.selectedUserIds.includes(user.id)) {
-          this.selectedUserIds.push(user.id);
+        if (!this.selectedUserIDs.includes(user.id)) {
+          this.selectedUserIDs.push(user.id);
         }
       })
       this.allSelected = true;
     }
     },
   checkIfAllUsersSelected() {
-    if (this.selectedUserIds.length == this.users.length) {
+    if (this.selectedUserIDs.length == this.users.length) {
       this.allSelected = true;
     } else {
       this.allSelected = false;
@@ -251,6 +254,12 @@ export default {
   }
 },
   computed: {
+    actionButtonDisabled(){
+      if (this.selectedUserIDs.length > 0) {
+        return false;
+      } 
+      return true;
+    },
     filteredList() {
       let filteredUsers = this.users;
       if (this.filter.firstName != "") {
@@ -288,13 +297,6 @@ export default {
       }
       return filteredUsers;
     },
-    actionButtonDisabled() {
-      if (this.selectedUserIds.length == 0) {
-        return true;
-      }
-      return false;
-    }
-    
   }
 };
 </script>
