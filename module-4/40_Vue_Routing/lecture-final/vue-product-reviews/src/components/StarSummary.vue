@@ -16,7 +16,10 @@ export default {
     },
     computed: {
         numberOfReviews() {
-            const reviews = this.$store.state.reviews;
+            //const reviews = this.$store.state.reviews;
+            const reviews = this.$store.state.products.find(
+                p => p.id == this.$store.state.activeProduct
+            ).reviews;
             return reviews.reduce( (count, review) =>{
                 return count + ( review.rating == this.rating );
             }, 0);
