@@ -11,8 +11,12 @@
       <star-summary rating="5" />
     </div>
     <add-review />
-    <review-list />
-    
+    <div class="view-type">
+      <a href="#" v-on:click.prevent="tableView = true">Table View</a>
+      <a href="#" v-on:click.prevent="tableView = false">List View</a>
+    </div>
+    <review-list  v-if="!tableView" />
+    <review-table  v-if="tableView" />
   </div>
 </template>
 
@@ -21,6 +25,7 @@ import AverageSummary from "./components/AverageSummary"
 import ReviewList from './components/ReviewList.vue'
 import StarSummary from './components/StarSummary.vue'
 import AddReview from './components/AddReview.vue'
+import ReviewTable from './components/table/ReviewTable.vue'
 
 export default {
   name: 'App',
@@ -28,13 +33,22 @@ export default {
     AverageSummary,
     StarSummary,
     ReviewList,
-    AddReview
-
+    AddReview,
+    ReviewTable
+  },
+  data() {
+    return {
+      tableView: false,
+    }
   }
 }
 </script>
 
 <style>
+div.view-type {
+  display: flex;
+  justify-content: flex-end;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
