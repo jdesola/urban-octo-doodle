@@ -59,6 +59,44 @@ export default {
       });
     },
     saveNewBoard() {
+      // set the loading animation
+      // call the POST in the API
+      // If promise is fullfilled
+        // check the status is 201
+          // reset the newBoard
+          // close the add board form
+          // call retrieve boards method
+      // If promise is rejected
+        // create an error message for the user
+        // set isLoading to false
+
+      this.isLoading = true;
+      boardsService.addBoard(this.newBoard)
+        // promise fullfilled
+        .then( response => {   
+          if (response.status === 201) {
+            this.newBoard = {
+                title: '',
+                backgroundColor: this.randomBackgroundColor()
+              }; 
+            this.showAddBoard = false;
+            this.retrieveBoards();
+          }
+        })
+        // promise rejected
+        .catch( error => {
+            // Determine if error is Request, Response, or code
+            // If it is a response (4xx or 5xx HTTP status code)
+            // If a request (could not connect to the API)
+            // If a code error
+            if (error.response) {
+              this.errorMsg = `Error adding board: ${error.status} - ${error.statusText}`;
+            } else if (error.request) {
+              this.errorMsg = 'Could not connect to server.  Please try again.';
+            } else {
+              this.errorMsg = 'An unexpected error occurred trying to access the server';
+            }
+        });
 
     },
     randomBackgroundColor() {

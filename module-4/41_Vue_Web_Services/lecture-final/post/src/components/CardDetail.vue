@@ -72,7 +72,7 @@ export default {
             if (error.response) {
               this.errorMsg =
                 "Error deleting card. Response received was '" +
-                error.response.statusText +
+                error.response.status + " : " + error.response.statusText +
                 "'.";
             } else if (error.request) {
               this.errorMsg =

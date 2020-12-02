@@ -21,7 +21,7 @@
 </template>
 
 <script>
-
+import boardService from '../services/BoardService';
 
 export default {
   data() {
@@ -29,6 +29,12 @@ export default {
       boards: [],
       isLoading: true
     };
+  },
+  created() {
+    boardService.getBoards().then( response => {
+      this.boards = response.data;
+      this.isLoading = false;
+    })
   }
 };
 </script>
