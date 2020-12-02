@@ -1,8 +1,7 @@
 <template>
     <div>
-        <a href="#" v-on:click.prevent="showForm = true">Add New Review</a>
 
-        <form v-on:submit.prevent="addNewReview" v-if="showForm" >
+        <form v-on:submit.prevent="addNewReview" >
             <div class="form-element">
                 <label for="reviewer">Name:</label>
                 <input id="reviewer" type="text" v-model="newReview.reviewer" />
@@ -36,7 +35,6 @@ export default {
     name: "add-review",
     data() {
         return {
-            showForm: false,
             newReview: {
                 favorited: false
             }
@@ -50,8 +48,16 @@ export default {
     },
     methods: {
         addNewReview() {
+            const productId = this.$route.params.id;
+            this.newReview.id = productId;
             this.$store.commit("ADD_REVIEW", this.newReview);
             this.resetForm();
+            this.$router.push({
+                name: 'product-detail',
+                params: {
+                    id: productId
+                }
+            });
         },
         resetForm() {
             this.newReview = {
