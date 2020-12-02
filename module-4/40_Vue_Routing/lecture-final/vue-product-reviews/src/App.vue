@@ -1,10 +1,12 @@
 <template>
+<<<<<<< HEAD
   <div id="app">
     <div id="nav">
       
     </div>
+=======
+>>>>>>> 79e5bd1310487068371d66b41bd53bafd42d07e4
     <router-view/>
-  </div>
 </template>
 
 <style>

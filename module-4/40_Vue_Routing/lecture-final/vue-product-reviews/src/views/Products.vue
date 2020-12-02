@@ -6,6 +6,7 @@
 </template>
 
 <script>
+<<<<<<< HEAD
 import ProductsList from '@/components/ProductsList.vue'
 
 export default {
@@ -13,6 +14,15 @@ export default {
       ProductsList 
       }
 
+=======
+import ProductsList from '@/components/ProductsList'
+
+export default {
+    components: {
+        ProductsList
+     
+    }
+>>>>>>> 79e5bd1310487068371d66b41bd53bafd42d07e4
 }
 </script>
 

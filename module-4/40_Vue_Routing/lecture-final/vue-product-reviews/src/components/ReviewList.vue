@@ -25,7 +25,9 @@ export default {
         },
         filteredReviews() {
             const reviewsFilter = this.$store.state.filter;
-            const reviews = this.$store.state.reviews;
+            const reviews = this.$store.state.products.find(
+                p => p.id == this.$store.state.activeProduct
+            ).reviews;
             return reviews.filter( review => {
                 return reviewsFilter === 0 ? true : reviewsFilter === review.rating;
             });

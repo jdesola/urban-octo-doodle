@@ -81,7 +81,12 @@ export default new Vuex.Store({
       reviewToChange.favorited = !reviewToChange.favorited;
     },
     ADD_REVIEW(state, review) {
+<<<<<<< HEAD
       state.reviews.unshift(review);
+=======
+      const product = this.state.products.find( p => p.id == review.id);
+      product.reviews.unshift(review);
+>>>>>>> 79e5bd1310487068371d66b41bd53bafd42d07e4
     },
     SET_ACTIVE_PRODUCT(state, productId) {
       state.activeProduct = productId;
