@@ -29,6 +29,7 @@
 
 <script>
 import BoardColumn from '@/components/BoardColumn';
+import boardService from '@/services/BoardService';
 
 export default {
   name: 'cards-list',
@@ -52,6 +53,14 @@ export default {
     completed() {
       return this.cards.filter(card => card.status === 'Completed');
     }
+  },
+  created() {
+    const boardId = this.$route.params.id;
+    boardService.getCards( boardId ).then( response => {
+      this.title = response.data.title;
+      this.cards = response.data.cards;
+      this.isLoading = false;
+    })
   }
 };
 </script>

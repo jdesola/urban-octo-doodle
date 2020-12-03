@@ -28,6 +28,14 @@ export default {
 
   deleteCard(cardID) {
     return http.delete(`/cards/${cardID}`);
+  },
+
+  addBoard( board ) {
+    return http.post('/boards', board);
+  },
+
+  deleteBoard( boardId ) {
+    return http.delete(`/boards/${boardId}`);
   }
 
 }

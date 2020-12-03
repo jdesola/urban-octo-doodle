@@ -67,7 +67,36 @@ export default {
         });
     },
     deleteBoard() {
-      
+      // Confirm with the user
+      // call the delete API
+      // Promise Fullfilled
+        // Is status 200
+          // inform the user
+          // remove the board from VueX store
+          // redirect the user to the home page
+      // Promise Rejected
+        // the user  (Response - 4xx/5xx, Request - can't connect, code)
+
+      if ( confirm("Are you sure you want to delete this board?") ) {
+        boardsService.deleteBoard(this.boardId)
+          .then( response => {
+            if (response.status == 200) {
+              alert("Board deleted successfully");
+              this.$store.commit('DELETE_BOARD', this.boardId);
+              this.$router.push("/");
+            }
+          })
+          .catch( error => {
+            if (error.response) {
+              this.errorMsg = `Error deleting board.  ${error.response.status} - ${error.response.statusText}`;
+            } else if (error.request) {
+              this.errorMsg= 'Could not conect to server';
+            } else {
+              this.errorMsg = 'Unexpected error';
+              console.error(error);
+            }
+          });
+      }
     }
   },
   created() {
