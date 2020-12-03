@@ -22,6 +22,14 @@ public class ApiParkDao implements ParkDao {
 	
 		return response.getData();
 	}
+
+	@Override
+	public List<Park> getByState(String stateCode) {
+		String url = baseUrl + "?stateCode=" + stateCode + "&api_key=" + apiKey;
+		ParkApiResponse response = restTemplate.getForObject(url, ParkApiResponse.class);
+	
+		return response.getData();
+	}
 	
 	
 }
