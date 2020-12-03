@@ -1,4 +1,4 @@
-package com.techelevator.pakrs.controller;
+package com.techelevator.parks.controller;
 
 import java.security.Principal;
 import java.util.List;
