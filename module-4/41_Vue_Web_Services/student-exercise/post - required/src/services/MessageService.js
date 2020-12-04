@@ -1,3 +1,6 @@
+
+
+
 import axios from 'axios';
 
 const http = axios.create({
@@ -8,6 +11,18 @@ export default {
 
   get(id) {
     return http.get(`/messages/${id}`);
+  },
+  
+  addMessage(message) {
+    return http.post('/messages', message);
+  },
+
+  updateMessage(message) {
+    return http.put(`/messages/${message.id}`, message);
+  },
+
+  deleteMessage(id) {
+    return http.put(`/messages/${id}`);
   }
 
 }

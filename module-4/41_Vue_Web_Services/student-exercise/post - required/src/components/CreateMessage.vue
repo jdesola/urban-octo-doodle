@@ -32,10 +32,25 @@ export default {
   },
   methods: {
     saveMessage() {
+      const message = {
+        id: this.message.id,
+        topicId: this.message.topicId,
+        title: this.message.title,
+        messageText: this.message.messageText
+      }
 
-    }
+      messageService
+      .addMessage(message)
+      .then(response => {
+        if (response.status === 201){
+          this.$router.push({name: `Messages`, params: { id: this.message.topicId }}
+          )}
+      });
+    },
   }
-};
+}
+
+      
 </script>
 
 <style>
