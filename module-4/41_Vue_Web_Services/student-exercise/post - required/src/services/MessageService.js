@@ -22,7 +22,7 @@ export default {
   },
 
   deleteMessage(id) {
-    return http.put(`/messages/${id}`);
+    return http.delete(`/messages/${id}`);
   }
 
 }
